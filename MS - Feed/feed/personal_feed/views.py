@@ -3,5 +3,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def home(request):
-    return HttpResponse('<h2>Hello World</h2>')
+def personal_feed(request):
+    return HttpResponse('<h2>Personal feed</h2>')
