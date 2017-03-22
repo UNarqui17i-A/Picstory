@@ -19,6 +19,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', include('wall_feed.urls')),
-    url(r'^[A-Za-z]*', include('personal_feed.urls')),
+    url(r'^(?P<username>\w{1,50})/$', include('personal_feed.urls')),
     url(r'^admin/', admin.site.urls)
 ]
