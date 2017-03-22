@@ -7,7 +7,7 @@
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/usersDB');
+mongoose.connect('mongodb://192.168.99.101:27017/usersDB');
 var Schema = mongoose.Schema;
 var UserSchema = Schema({
     id:[{type: Number, required : true, unique : true}],

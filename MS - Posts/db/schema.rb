@@ -10,21 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314023616) do
+ActiveRecord::Schema.define(version: 20170322012727) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "image_id"
+    t.integer  "post_id"
     t.string   "user_id"
-    t.string   "comment"
+    t.string   "commented"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_comments_on_image_id"
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "user_id"
     t.string   "title"
-    t.string   "url"
+    t.string   "image_url"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", null: false
@@ -32,12 +35,14 @@ ActiveRecord::Schema.define(version: 20170314023616) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer  "image_id"
+    t.integer  "post_id"
     t.string   "user_id"
-    t.integer  "score"
+    t.integer  "scored"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_scores_on_image_id"
+    t.index ["post_id"], name: "index_scores_on_post_id", using: :btree
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "scores", "posts"
 end

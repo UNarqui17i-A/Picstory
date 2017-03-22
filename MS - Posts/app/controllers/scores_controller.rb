@@ -46,6 +46,6 @@ class ScoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def score_params
-      params.require(:score).permit(:image_id, :user_id, :score)
+      params.require(:score).permit(:post_id, :user_id, :score)
     end
 end

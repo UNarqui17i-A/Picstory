@@ -1,4 +1,3 @@
-## Microservice - User ##
+# User
 
-
-
+a [Sails](http://sailsjs.org) application

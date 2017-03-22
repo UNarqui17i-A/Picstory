@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To have this correctly running execute:
 
-Things you may want to cover:
+* docker-compose build
 
-* Ruby version
+* docker-compose up -d db
 
-* System dependencies
+* docker-compose run --rm app rake db:create db:migrate db:seed
 
-* Configuration
+* docker-compose up
 
-* Database creation
+It will be running at localhost:8010
 
-* Database initialization
+exposed routes are CRUD of:
 
-* How to run the test suite
+* /posts
+e.g.
+GET /posts/ :: can filter by user_id
+GET /posts/1  :: 1 = post_id
+POST /posts
+PATCH/PUT /posts/1
+DELETE /posts/1
 
-* Services (job queues, cache servers, search engines, etc.)
+* /scores
 
-* Deployment instructions
-
-* ...
+* /comments
