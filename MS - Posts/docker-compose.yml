@@ -4,9 +4,8 @@ services:
     image: postgres
   app:
     build: .
-    command: bundle exec rails s -p 8010 -b '0.0.0.0'
-    volumes:
-      - .:/post
+    command: 
+      bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8010 -b '0.0.0.0'"
     ports:
       - "8010:8010"
     depends_on:
