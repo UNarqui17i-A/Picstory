@@ -7,7 +7,7 @@ import requests
 
 
 def personal_feed(request, username=None):
-    end_point_docker = 'http://192.168.99.101:8010/posts?user_id='
+    end_point_docker = 'http://192.168.99.100:8010/posts?user_id='
     url = end_point_docker + username;
     data = requests.get(url)
     return HttpResponse(data)
