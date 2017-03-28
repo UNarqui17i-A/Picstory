@@ -7,10 +7,12 @@ export class RestService {
 
   constructor(private http: Http) { }
 
+  urlNewUser: string = 'http://192.168.99.101:8005/user';
+
   putSignUp(body : string){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.put("",body,requestOptions)
+    return this.http.post( this.urlNewUser,body,requestOptions)
       .catch(this.handleError);
   }
 
