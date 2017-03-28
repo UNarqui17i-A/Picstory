@@ -1,3 +1,17 @@
-<p>
-  form-register works!
-</p>
+<form [formGroup]="registerForm">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="name" formControlName="name">
+    <br>
+    <input type="email" class="form-control" placeholder="email" formControlName="email">
+    <br>
+    <input type="username" class="form-control" placeholder="username" formControlName="username">
+    <br>
+    <div formGroupName="passwords">
+      <input type="password" class="form-control" placeholder="password" formControlName="password">
+      <br>
+      <input type="password" class="form-control" placeholder="confirm your password" formControlName="con_password">
+      <br>
+    </div>
+  </div>
+  <button type="submit" (click)="signUp()">Submit</button>
+</form>
