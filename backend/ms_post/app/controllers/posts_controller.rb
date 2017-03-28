@@ -4,9 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     if params[:user_id]
-        @posts = Post.where(user_id: params[:user_id])
+        @posts = Post.where(user_id: params[:user_id]).paginate(:page => params[:page], :per_page => 5)
     else
-        @posts = Post.all
+        @posts = Post.paginate(:page => params[:page], :per_page => 5)
     end
     render json: @posts
   end
