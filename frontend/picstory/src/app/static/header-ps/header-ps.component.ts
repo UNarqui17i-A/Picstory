@@ -9,6 +9,8 @@ export class HeaderPsComponent implements OnInit {
 
   constructor() { }
 
+  public isCollapsed: boolean = false;
+
   ngOnInit() {
   }
 
