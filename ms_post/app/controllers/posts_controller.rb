@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:show, :update, :update_url, :destroy]
 
   # GET /posts
   def index
@@ -36,6 +36,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def update_url
+    if @post.update(post_url_params)
+      render json: @post
+    else
+      render json: @post.errors, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /posts/1
   def destroy
     @post.destroy
@@ -50,5 +58,9 @@ class PostsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.require(:post).permit(:user_id, :title, :image_url, :latitude, :longitude)
+    end
+
+    def post_url_params
+      params.permit(:image_url)
     end
 end
