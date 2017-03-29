@@ -1,12 +1,12 @@
 class ScoresController < ApplicationController
   before_action :set_score, only: [:show, :update, :destroy]
+  after_action :set_total_score, only: [:create, :update, :destroy]
 
-  # GET /scores
-  #def index
-    #@scores = Score.all
-
-    #render json: @scores
-  #end
+  # GET posts/:post_id/scores
+  def index
+    @scores = Post.find(params[:post_id]).scores
+    render json: @scores
+  end
 
   # GET /scores/1
   #def show
@@ -44,8 +44,14 @@ class ScoresController < ApplicationController
       @score = Score.find(params[:id])
     end
 
+    def set_total_score
+      @post = @score.post
+      @post.update(total_score: @post.scores.average(:scored).to_f)
+    end
+
     # Only allow a trusted parameter "white list" through.
     def score_params
-      params.require(:score).permit(:post_id, :user_id, :score)
+      params.require(:score).permit(:post_id, :user_id, :scored)
     end
+
 end
