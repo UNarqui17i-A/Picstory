@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { RestService } from './rest.service';
 import { DatePipe } from "@angular/common";
-
+import { EmailValidator } from '../../validators/email.validator';
+import { EqualPasswordsValidator } from '../../validators/eqPassword.validator';
 @Component({
   selector: 'app-form-register',
   templateUrl: './form-register.component.html',
@@ -21,33 +22,35 @@ export class FormRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    /// TODO
     this.minDate = new Date();
     this.minDate.setFullYear(1930,1,1);
     this.maxDate = new Date();
+    ///
 
     this.registerForm = this.fb.group({
-       firstName: ["", Validators.minLength(3)],
-       lastName: ["", Validators.minLength(3)],
-       username: [""],
-       email: [""],
+       firstName: [null, Validators.compose([Validators.minLength(3), Validators.required])],
+       lastName: [null, Validators.compose([Validators.minLength(3), Validators.required])],
+       username: [null, Validators.compose([Validators.minLength(3), Validators.required])],
+       email: [null, Validators.compose([Validators.required, EmailValidator.validate])],
        passwords: this.fb.group({
-         password: [""],
-         con_password: [""],
-       }),
-       bio: [""],
-       birthDate: [""]
+         password: [null, Validators.compose([Validators.required])],
+         con_password: [null, Validators.compose([Validators.required])],
+       }, { validator: EqualPasswordsValidator.validate('password', 'con_password')}),
+       bio: [null],
+       birthDate: [null, Validators.compose([Validators.required]) ]
       })
   }
 
-  signUp(){
-    let firstName = this.registerForm.controls['firstName'].value
-    let lastName = this.registerForm.controls['lastName'].value
-    let username = this.registerForm.controls['username'].value
-    let email = this.registerForm.controls['email'].value
-    let password = (<FormGroup> this.registerForm.controls['passwords']).controls['password'].value
-    let bio = this.registerForm.controls['bio'].value
+  signUp(formValue: any){
+    let firstName = formValue.controls['firstName'].value
+    let lastName = formValue.controls['lastName'].value
+    let username = formValue.controls['username'].value
+    let email = formValue.controls['email'].value
+    let password = (<FormGroup> formValue.controls['passwords']).controls['password'].value
+    let bio = formValue.controls['bio'].value
     var datePipe = new DatePipe('en-US');
-    let birthDate = datePipe.transform(this.registerForm.controls['birthDate'].value,'dd/MM/yyyy')
+    let birthDate = datePipe.transform(formValue.controls['birthDate'].value,'dd/MM/yyyy')
     let request = JSON.stringify({firstName, lastName, username, email, password, bio, birthDate})
     console.log(request)
     this.restService.putSignUp(request)

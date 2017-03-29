@@ -1,32 +1,33 @@
-<form [formGroup]="registerForm">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
-    <br>
-    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
-    <br>
-    <input type="username" class="form-control" placeholder="username" formControlName="username">
-    <br>
-    <input type="email" class="form-control" placeholder="email" formControlName="email">
-    <br>
-    <div formGroupName="passwords">
-      <input type="password" class="form-control" placeholder="password" formControlName="password">
-      <br>
-      <input type="password" class="form-control" placeholder="confirm your password" formControlName="con_password">
-      <br>
-    </div>
-    <textarea class="form-control" rows="5" placeholder="Tell us something about yourself" ></textarea>
-    <br>
-    <p-calendar formControlName="birthDate" [monthNavigator]="true" [yearNavigator]="true" [minDate]="minDate" [maxDate]="maxDate" ></p-calendar>
-  </div>
-  <button type="submit" [disabled]="!registerForm.valid" (click)="signUp()">Submit</button>
-</form>
-<!--
-<div>
-  <div class="">
-    <em *ngIf="dt">{{getDate() | date: 'fullDate'}}</em>
-    <datepicker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled">
-
-    </datepicker>
+<div class="margin">
+  <div class="container-fluid">
+    <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" >
+      <div class="form-group"  [ngClass]="{'has-error':!registerForm.controls['firstName'].valid}">
+        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['lastName'].valid}">
+        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['username'].valid}">
+        <input type="username" class="form-control" placeholder="username" formControlName="username">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['email'].valid}">
+        <input type="email" class="form-control" placeholder="email" formControlName="email">
+      </div>
+      <div class="form-group" formGroupName="passwords" [ngClass]="{'has-error':!registerForm.controls['passwords'].valid}">
+        <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['password'].valid}">
+          <input type="password" class="form-control" placeholder="password" formControlName="password">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['con_password'].valid}">
+          <input type="password" class="form-control" placeholder="confirm your password" formControlName="con_password">
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" formControlName="bio" rows="5" placeholder="Tell us something about yourself" ></textarea>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['birthDate'].valid}">
+        <p-calendar formControlName="birthDate" [monthNavigator]="true" [yearNavigator]="true" [minDate]="minDate" [maxDate]="maxDate" placeholder="Your birthday here"></p-calendar>
+      </div>
+      <button class="btn btn-default" type="submit" [disabled]="!registerForm.valid">Submit</button>
+    </form>
   </div>
 </div>
--->
