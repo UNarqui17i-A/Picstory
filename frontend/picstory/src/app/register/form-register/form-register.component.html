@@ -15,8 +15,12 @@
       <br>
     </div>
     <textarea class="form-control" rows="5" placeholder="Tell us something about yourself" ></textarea>
+    <br>
+    <p-calendar formControlName="birthDate" [monthNavigator]="true" [yearNavigator]="true" [minDate]="minDate" [maxDate]="maxDate" ></p-calendar>
   </div>
+  <button type="submit" [disabled]="!registerForm.valid" (click)="signUp()">Submit</button>
 </form>
+<!--
 <div>
   <div class="">
     <em *ngIf="dt">{{getDate() | date: 'fullDate'}}</em>
@@ -25,4 +29,4 @@
     </datepicker>
   </div>
 </div>
-<button type="submit" (click)="signUp()">Submit</button>
+-->

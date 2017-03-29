@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormRegisterComponent } from './form-register/form-register.component';
-import {RestService} from "./form-register/rest.service";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { DatepickerModule } from 'ng2-bootstrap/datepicker';
+import { RestService } from "./form-register/rest.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CalendarModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DatepickerModule.forRoot()
+    CalendarModule,
+    BrowserAnimationsModule
   ],
   declarations: [FormRegisterComponent],
   providers: [RestService]

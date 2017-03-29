@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { RestService } from './rest.service';
@@ -14,17 +14,17 @@ export class FormRegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   response: string;
-  public dt: Date = new Date();
-  public minDate: Date = void 0;
-  public dateDisabled: {date: Date, mode: string}[];
-  public done: boolean = false;
+  minDate: Date;
+  maxDate: Date;
 
   constructor(private fb: FormBuilder, private restService: RestService) {
-    (this.minDate = new Date()).setDate(this.minDate.getDate()-1000);
-    this.dateDisabled = [];
   }
 
   ngOnInit() {
+    this.minDate = new Date();
+    this.minDate.setFullYear(1930,1,1);
+    this.maxDate = new Date();
+
     this.registerForm = this.fb.group({
        firstName: ["", Validators.minLength(3)],
        lastName: ["", Validators.minLength(3)],
@@ -39,11 +39,6 @@ export class FormRegisterComponent implements OnInit {
       })
   }
 
-  public getDate(): string{
-    var datePipe = new DatePipe()
-    return datePipe.transform(this.dt.toString(), 'dd/MM/yyyy')
-  }
-
   signUp(){
     let firstName = this.registerForm.controls['firstName'].value
     let lastName = this.registerForm.controls['lastName'].value
@@ -51,10 +46,11 @@ export class FormRegisterComponent implements OnInit {
     let email = this.registerForm.controls['email'].value
     let password = (<FormGroup> this.registerForm.controls['passwords']).controls['password'].value
     let bio = this.registerForm.controls['bio'].value
-    let birthDate = this.getDate()
-    console.log(birthDate) ;
-
-    this.restService.putSignUp(JSON.stringify({firstName, lastName, username, email, password, bio, birthDate}))
+    var datePipe = new DatePipe('en-US');
+    let birthDate = datePipe.transform(this.registerForm.controls['birthDate'].value,'dd/MM/yyyy')
+    let request = JSON.stringify({firstName, lastName, username, email, password, bio, birthDate})
+    console.log(request)
+    this.restService.putSignUp(request)
       .subscribe(
         response  => this.response = response,
         error => error = error,
