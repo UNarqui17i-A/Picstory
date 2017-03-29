@@ -1,10 +1,12 @@
 <form [formGroup]="registerForm">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="name" formControlName="name">
+    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
     <br>
-    <input type="email" class="form-control" placeholder="email" formControlName="email">
+    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
     <br>
     <input type="username" class="form-control" placeholder="username" formControlName="username">
+    <br>
+    <input type="email" class="form-control" placeholder="email" formControlName="email">
     <br>
     <div formGroupName="passwords">
       <input type="password" class="form-control" placeholder="password" formControlName="password">
@@ -12,6 +14,15 @@
       <input type="password" class="form-control" placeholder="confirm your password" formControlName="con_password">
       <br>
     </div>
+    <textarea class="form-control" rows="5" placeholder="Tell us something about yourself" ></textarea>
   </div>
-  <button type="submit" (click)="signUp()">Submit</button>
 </form>
+<div>
+  <div class="">
+    <em *ngIf="dt">{{getDate() | date: 'fullDate'}}</em>
+    <datepicker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled">
+
+    </datepicker>
+  </div>
+</div>
+<button type="submit" (click)="signUp()">Submit</button>
