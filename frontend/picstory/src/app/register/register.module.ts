@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { RestService } from "./form-register/rest.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { CalendarModule } from 'primeng/primeng';
+import { CalendarModule, SharedModule } from 'primeng/primeng';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     FormsModule,
     ReactiveFormsModule,
     CalendarModule,
+    SharedModule,
     BrowserAnimationsModule
   ],
   declarations: [FormRegisterComponent],

@@ -22,14 +22,8 @@ export class FormRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    /// TODO
-    this.minDate = new Date();
-    this.minDate.setFullYear(1930,1,1);
-    this.maxDate = new Date();
-    ///
-
     this.registerForm = this.fb.group({
-       firstName: [null, Validators.compose([Validators.minLength(3), Validators.required])],
+       firstName: [null, Validators.compose([Validators.minLength(3), Validators.required, Validators.pattern('[A-Za-z]*')])],
        lastName: [null, Validators.compose([Validators.minLength(3), Validators.required])],
        username: [null, Validators.compose([Validators.minLength(3), Validators.required])],
        email: [null, Validators.compose([Validators.required, EmailValidator.validate])],
@@ -50,9 +44,9 @@ export class FormRegisterComponent implements OnInit {
     let password = (<FormGroup> formValue.controls['passwords']).controls['password'].value
     let bio = formValue.controls['bio'].value
     var datePipe = new DatePipe('en-US');
-    let birthDate = datePipe.transform(formValue.controls['birthDate'].value,'dd/MM/yyyy')
+    let birthDate = datePipe.transform(formValue.controls['birthDate'].value, 'dd/MM/yyyy')
+    //let birthDate = formValue.controls['birthDate'].value
     let request = JSON.stringify({firstName, lastName, username, email, password, bio, birthDate})
-    console.log(request)
     this.restService.putSignUp(request)
       .subscribe(
         response  => this.response = response,
