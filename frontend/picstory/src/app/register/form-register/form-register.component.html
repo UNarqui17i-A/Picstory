@@ -1,18 +1,24 @@
 <div class="margin">
   <div class="container-fluid">
-    <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm.value)" >
+    <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm, $event)" >
       <div class="form-group"  [ngClass]="{'has-error':!registerForm.controls['firstName'].valid}">
         <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
 
         <div *ngIf="registerForm.controls['firstName'].hasError('pattern')">
           <br>
-          <div class="alert alert-danger">Your name can not have numbers in it</div>
+          <div class="alert alert-danger">Your name can not have numbers or symbols in it</div>
         </div>
 
         <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].hasError('required')">
           <br>
           <div class="alert alert-danger">This field is required</div>
         </div>
+
+        <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].hasError('minLength')">
+          <br>
+          <div class="alert alert-danger">Your name must be at least three chars long</div>
+        </div>
+
       </div>
       <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['lastName'].valid}">
         <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
@@ -37,7 +43,6 @@
       <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['birthDate'].valid}">
         <p-calendar showOnFocus="false" required="true"  formControlName="birthDate" dateFormat="dd.mm.yy" [monthNavigator]="true" [yearNavigator]="true"  yearRange="1930:1999"></p-calendar>
       </div>
-      {{ registerForm.value | json}}
       <button class="btn btn-default" type="submit" [disabled]="!registerForm.valid">Submit</button>
     </form>
   </div>
