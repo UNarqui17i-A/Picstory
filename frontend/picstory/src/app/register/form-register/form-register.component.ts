@@ -22,13 +22,13 @@ export class FormRegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
        firstName: [null, Validators.compose([Validators.minLength(3), Validators.required, Validators.pattern('[A-Za-z]*')])],
-       lastName: [null, Validators.compose([Validators.minLength(3), Validators.required])],
+       lastName: [null, Validators.compose([Validators.minLength(3), Validators.required, Validators.pattern('[A-Za-z]*')])],
        username: [null, Validators.compose([Validators.minLength(5), Validators.required])],
        email: [null, Validators.compose([Validators.required, EmailValidator.validate])],
        passwords: this.fb.group({
          password: [null, Validators.compose([Validators.required, Validators.minLength(8)])],
          con_password: [null, Validators.compose([Validators.required, Validators.minLength(8)])],
-       }, { validator: EqualPasswordsValidator.validate('password', 'con_password')}),
+       }, { validator: Validators.compose([EqualPasswordsValidator.validate('password', 'con_password'), Validators.required]) }),
        bio: [null],
        birthDate: [null, Validators.compose([Validators.required]) ]
       })
