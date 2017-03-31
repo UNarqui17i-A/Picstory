@@ -80,12 +80,20 @@
         </div>
 
       </div>
+
       <div class="form-group">
         <textarea class="form-control" formControlName="bio" rows="5" placeholder="Tell us something about yourself" ></textarea>
       </div>
+
       <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['birthDate'].valid}">
         <p-calendar showOnFocus="false" required="true"  placeholder="your birthday comes here!" formControlName="birthDate" dateFormat="dd.mm.yy" [monthNavigator]="true" [yearNavigator]="true"  yearRange="1930:1999"></p-calendar>
+
+        <div *ngIf="registerForm.controls['birthDate'].hasError('required') && registerForm.controls['birthDate'].touched">
+          <div class="text-danger">Please provide your birthday</div>
+        </div>
+
       </div>
+
       <button class="btn btn-default" type="submit" [disabled]="!registerForm.valid">Submit</button>
     </form>
   </div>
