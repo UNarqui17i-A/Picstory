@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { MaterializeModule } from 'angular2-materialize';
 import 'hammerjs';
 
 
@@ -24,6 +25,7 @@ import { StaticModule } from './static/static.module';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
+    MaterializeModule,
 
     FeedModule,
     LoginModule,
