@@ -2,9 +2,10 @@
 
 Front end, developed in Angular 2
 
-Technologies used:
-Angular-cli
-Yarn
-Materialize Css
-Material
-Bootstrap
+Technologies used: </br>
+
+Angular-cli </br>
+Yarn </br>
+Materialize Css </br>
+Material </br>
+Bootstrap </br>
