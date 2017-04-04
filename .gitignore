@@ -1,0 +1,28 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/frontend/picstory/dist
+/frontend/picstory/tmp
+
+# dependencies
+/frontend/picstory/node_modules
+/frontend/picstory/bower_components
+
+# IDEs and editors
+/frontend/picstory/.idea
+
+# misc
+/frontend/picstory/.sass-cache
+/frontend/picstory/connect.lock
+/frontend/picstory/coverage/*
+/frontend/picstory/libpeerconnection.log
+/frontend/picstory/npm-debug.log
+/frontend/picstory/testem.log
+/frontend/picstory/typings
+
+# e2e
+/frontend/picstory/e2e/*.js
+/frontend/picstory/e2e/*.map
+
+#System Files
+/frontend/picstory/.DS_Store
