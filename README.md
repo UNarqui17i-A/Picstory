@@ -35,7 +35,7 @@ The application is separated in three microservices:
     *   PostgreSQL
 
 
-3.  **Newsfeed:** Manage Personal and General newsfeed.
+3.  **Images:** Manage content related to images and their storage.
 
     *Technologies:*
     *   Python (Django Framework)
