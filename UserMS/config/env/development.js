@@ -35,8 +35,8 @@ module.exports = {
 
   port: 8000,
 
-  jwt: {
-    token_secret: 'JustATest'
+  session: {
+    secret: 'd47097896e48a771c710757e9a8c1616'
   }
 
 };

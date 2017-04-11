@@ -47,8 +47,8 @@ module.exports = {
   //   level: "silent"
   // }
 
-  jwt: {
-    token_secret: 'JustATestForProduction'
+  session: {
+    secret: 'd47097896e48a771c710757e9a8c1616'
   }
 
 };

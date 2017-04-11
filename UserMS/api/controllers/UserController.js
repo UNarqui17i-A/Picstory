@@ -8,10 +8,12 @@
 module.exports = {
 
   find: function(req, res) {
-    User.find({ }).exec((err, users) => {
+    User.find().exec((err, users) => {
       if (err) {
         return res.status(500).json({ err: err });
       }
+
+      users = users.map((x) => x.toJSON());
 
       return res.status(200).json({ users: users });
     });
@@ -94,7 +96,7 @@ module.exports = {
         return res.status(200).json({ message: 'User not Found with ID ' + req.params.id });
       }
 
-      User.destroy({}).exec((err, userDeleted) => {
+      User.destroy({ id: req.params.id }).exec((err, userDeleted) => {
         if (err) {
           return res.status(500).json({ err: err });
         }

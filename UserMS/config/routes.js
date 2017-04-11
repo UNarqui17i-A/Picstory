@@ -43,6 +43,7 @@ module.exports.routes = {
 
   // AuthController
   'post /auth/login': 'AuthController.login',
-  'get /auth/check': 'AuthController.checkAuth'
+  'post /auth/check': 'AuthController.check',
+  'post /auth/logout': 'AuthController.logout'
 
 };

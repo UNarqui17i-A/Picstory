@@ -73,24 +73,33 @@ module.exports = {
      type: 'mediumtext'
     },
 
-    /*
-    createdAt: {
-      type: 'datetime',
-      required: true,
-      defaultsTo: function() { return new Date(); }
+    // Attribute Methods
+    getFullName: function () {
+      return this.firstName + ' ' + this.lastName;
     },
 
-    updatedAt: {
-      type: 'datetime',
-      required: true,
-      defaultsTo: function() { return new Date(); }
-    }
-    */
-  },
+    // Default Methods
+    toJSON: function () {
+      let obj = this.toObject();
+      obj.fullName = this.getFullName();
+      delete obj.password;
+      return obj;
+    },
 
-  // Attribute Methods
-  getFullName: function () {
-    return this.first_name + ' ' + this.last_name;
+    comparePassword: function(password, cb) {
+      bcrypt.compare(password, this.password, function (err, match) {
+        if (err) {
+          cb(err);
+        }
+
+        if (match) {
+          cb(null, true);
+        } else {
+          cb(err);
+        }
+      });
+    }
+
   },
 
   // Lifecycle Callbacks
@@ -108,27 +117,6 @@ module.exports = {
 
   beforeDestroy: function(criteria, cb) {
     cb();
-  },
-
-  // Default Methods
-  toJSON: function () {
-    let obj = this.toObject();
-    delete obj.encryptedPassword;
-    return obj;
-  },
-
-  comparePassword: function(password, user, cb) {
-    bcrypt.compare(password, user.password, function(err, match) {
-      if (err) {
-        cb(err);
-      }
-
-      if (match) {
-        cb(null, true);
-      } else {
-        cb(err);
-      }
-    });
   }
 
 };
