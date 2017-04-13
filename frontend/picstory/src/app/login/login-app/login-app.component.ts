@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { RestService } from './rest.service';
 
 @Component({
   selector: 'app-login-app',
@@ -9,14 +10,26 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class LoginAppComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  response: string;
+  constructor(private fb: FormBuilder, private restService: RestService) { }
 
   ngOnInit() {
-    this.fb.group({})
+    this.loginForm = this.fb.group({
+      userName: [null, Validators.compose([Validators.minLength(5), Validators.required])],
+      password: [null, Validators.compose([Validators.required, Validators.minLength(8)])]
+    })
   }
 
-  loginUser(form: any){
-    return;
+  loginUser(formValue: any, event: Event){
+    let username = formValue.controls['username'].value
+    let password = (<FormGroup> formValue.controls['passwords']).controls['password'].value
+    let request = JSON.stringify({username: username, password: password})
+    this.restService.postSignUp(request)
+      .subscribe(
+        response  => this.response = response,
+        error => error = error,
+        () => { console.log(this.response);}
+      );
   }
 
 }

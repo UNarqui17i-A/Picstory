@@ -6,7 +6,7 @@ import { LoginAppComponent } from "./login/login-app/login-app.component";
 
 const routes: Routes = [
   {
-    path: '', component: LoginAppComponent
+    path: 'login', component: LoginAppComponent
   },
   {
     path: 'home', component: WallComponent
