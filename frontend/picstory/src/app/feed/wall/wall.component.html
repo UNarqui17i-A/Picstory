@@ -1,3 +1,1 @@
-Wall
-{{response}}
-<app-post [post]="userPosts"></app-post>
+<app-post *ngFor="let post of userPosts" [post]="post"></app-post>

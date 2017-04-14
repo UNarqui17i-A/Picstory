@@ -8,20 +8,20 @@ import { ComService } from "../services/com.service";
   providers: [ ComService ]
 })
 export class WallComponent implements OnInit {
-  userPosts: Array<string>;
-  response: string;
+  userPosts: Array<any>;
   error: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private comService: ComService) { }
+  constructor(private route: ActivatedRoute, private comService: ComService) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) =>{
       this.wallUser(params['id'])
     })
   }
+
   wallUser(id: string){
     this.comService.getPostsUser(id).subscribe(
-      response => this.response = response,
+      response => this.userPosts = response,
       error => this.error = error,
       () => {}
     )
