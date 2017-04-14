@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { ComService } from "../services/com.service";
 @Component({
   selector: 'app-wall',
   templateUrl: './wall.component.html',
-  styleUrls: ['./wall.component.css']
+  styleUrls: ['./wall.component.css'],
+  providers: [ ComService ]
 })
 export class WallComponent implements OnInit {
+  userPosts: Array<any>;
+  error: string;
 
-  posts: Array<string> =
-    [
-      'https://static.pexels.com/photos/147504/pexels-photo-147504.jpeg',
-      'https://static.pexels.com/photos/129897/pexels-photo-129897.jpeg',
-      'https://static.pexels.com/photos/130000/pexels-photo-130000.jpeg',
-      'https://static.pexels.com/photos/147684/pexels-photo-147684.jpeg',
-      'https://static.pexels.com/photos/146868/pexels-photo-146868.jpeg',
-    ];
-  constructor() { }
+  constructor(private route: ActivatedRoute, private comService: ComService) { }
 
   ngOnInit() {
-
+    this.route.params.forEach((params: Params) =>{
+      this.wallUser(params['id'])
+    })
   }
 
+  wallUser(id: string){
+    this.comService.getPostsUser(id).subscribe(
+      response => this.userPosts = response,
+      error => this.error = error,
+      () => {}
+    )
+  }
 }

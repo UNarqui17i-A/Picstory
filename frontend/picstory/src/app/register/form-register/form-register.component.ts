@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { RestService } from './rest.service';
-import { DatePipe } from "@angular/common";
 import { EmailValidator } from '../../validators/email.validator';
 import { EqualPasswordsValidator } from '../../validators/eqPassword.validator';
 @Component({
@@ -42,7 +41,6 @@ export class FormRegisterComponent implements OnInit {
     let password = (<FormGroup> formValue.controls['passwords']).controls['password'].value
     let confirmPassword = (<FormGroup> formValue.controls['passwords']).controls['con_password'].value
     let bio = formValue.controls['bio'].value
-    var datePipe = new DatePipe('en-US');
     //let birthDate = datePipe.transform(formValue.controls['birthDate'].value, 'dd/MM/yyyy')
     let birthDate = formValue.controls['birthDate'].value
     let request = JSON.stringify({firstName: firstName, lastName: lastName, username: username, email: email, password: password, confirmPassword: confirmPassword, birthDate: birthDate, bio: bio})
