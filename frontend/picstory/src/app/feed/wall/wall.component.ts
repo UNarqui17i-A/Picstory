@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wall.component.css']
 })
 export class WallComponent implements OnInit {
+  userPosts: Array<string>;
+
 
   constructor() { }
 

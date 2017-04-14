@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  @Input() post;
+  @Input() post: Array<string>;
   posts: Array<string> =
     [
       'https://static.pexels.com/photos/147504/pexels-photo-147504.jpeg',

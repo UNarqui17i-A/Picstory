@@ -27,7 +27,7 @@ default: &default
 
 development:
   <<: *default
-  database: post-ms_development
+  database: post_ms_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: post-ms_test
+  database: post_ms_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: post-ms_production
-  username: post-ms
+  database: post_ms_production
+  username: post_ms
   password: <%= ENV['POST-MS_DATABASE_PASSWORD'] %>
