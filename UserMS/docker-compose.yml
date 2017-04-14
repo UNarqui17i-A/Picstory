@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+
+  userms:
+      build: .
+      image: userms
+      container_name: userms
+      ports:
+        - 8005:8005
+      links:
+        - userdb
+
+  userdb:
+    build: ./db
+    image: userdb
+    container_name: userdb
+    ports:
+      - 27017:27017
