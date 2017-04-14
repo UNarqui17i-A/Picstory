@@ -15,14 +15,14 @@ export class LoginAppComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      userName: [null, Validators.compose([Validators.minLength(5), Validators.required])],
-      password: [null, Validators.compose([Validators.required, Validators.minLength(8)])]
+      username: [null, Validators.compose([Validators.minLength(5), Validators.required])],
+      password: [null, Validators.compose([Validators.minLength(8),Validators.required])]
     })
   }
 
   loginUser(formValue: any, event: Event){
     let username = formValue.controls['username'].value
-    let password = (<FormGroup> formValue.controls['passwords']).controls['password'].value
+    let password = formValue.controls['password'].value
     let request = JSON.stringify({username: username, password: password})
     this.restService.postSignUp(request)
       .subscribe(
