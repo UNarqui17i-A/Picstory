@@ -3,11 +3,13 @@ import settings as st
 import json
 import boto3
 from flask import request
+from flask_cors import CORS
 from eve import Eve
 
 s3 = boto3.resource('s3')
 client = boto3.client('s3')
 app = Eve()
+CORS(app)
 global post
 
 #Returns an url from a given ID of an object in AWS db

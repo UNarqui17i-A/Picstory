@@ -26,6 +26,9 @@
         "../node_modules/materialize-css/dist/css/materialize.css",
         "styles.css"
       ],
+      "comment": [
+        "Poner en styles ../node_modules/materialize-css/dist/css/materialize.css"
+      ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/hammerjs/hammer.js",

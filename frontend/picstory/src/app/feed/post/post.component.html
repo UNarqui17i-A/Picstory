@@ -1,11 +1,18 @@
 <div class="container">
   <div class="row">
-    <figure class="post well">
-      <img src="{{post.image_url}}">
-      <figcaption>
-        <h2>{{post.total_score}}</h2>
-      </figcaption>
-      <h2>{{post.title}}</h2>
-    </figure>
-    </div>
+    <md-card>
+      <md-card-header>
+        {{post.user_id}}
+      </md-card-header>
+      <figure class="post">
+        <img md-card-image src="{{post.image_url}}">
+        <figcaption>
+          <h2>{{post.total_score}}</h2>
+        </figcaption>
+      </figure>
+      <md-card-content>
+        <h2>{{post.title}}</h2>
+      </md-card-content>
+    </md-card>
+  </div>
 </div>
