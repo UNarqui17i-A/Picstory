@@ -5,6 +5,7 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PostComponent } from './post/post.component';
 import { NgUploaderModule } from "ngx-uploader";
 import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
+import { ImageUploadModule } from "angular2-image-upload";
 
 @NgModule({
   imports: [
@@ -12,7 +13,9 @@ import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
     NgUploaderModule,
     MdCardModule,
     MdInputModule,
-    MdButtonModule
+    MdButtonModule,
+    ImageUploadModule
+
   ],
   declarations: [WallComponent, NewsfeedComponent, PostComponent]
 })

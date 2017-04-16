@@ -15,27 +15,21 @@ export class NewsfeedComponent implements OnInit {
   error: string;
   image: string;
   response: any;
+  location = {};
 
   constructor(private comService: ComService, private awsService: AWSService) {
   }
 
-  changeListener($event) : void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    var file:File = inputValue.files[0];
-    var myReader:FileReader = new FileReader();
-
-    myReader.onloadend = (e) => {
-      this.image = myReader.result;
-      //console.log(this.image)
-    }
-    myReader.readAsDataURL(file);
-  }
-
   ngOnInit() {
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+    };
     this.newsFeed();
+  }
+
+  setPosition(position){
+    this.location = position.coords;
+    console.log(position.coords);
   }
 
   newsFeed(){
