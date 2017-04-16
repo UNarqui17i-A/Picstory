@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/nodejs /usr/share/yarn/bin/yarn.js
+  /usr/bin/nodejs /usr/share/yarn/bin/yarn.js remove aws-sdk
 
 PATH: 
   /usr/local/heroku/bin:/usr/local/apache-maven-3.3.9/bin:/home/rodesv/bin:/home/rodesv/.local/bin:/usr/local/heroku/bin:/usr/local/apache-maven-3.3.9/bin:/home/rodesv/.rvm/gems/ruby-2.3.0/bin:/home/rodesv/.rvm/gems/ruby-2.3.0@global/bin:/home/rodesv/.rvm/rubies/ruby-2.3.0/bin:/home/rodesv/bin:/home/rodesv/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/rodesv/.rvm/bin:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/home/rodesv/.rvm/bin:/home/rodesv/.rvm/bin:/home/rodesv/.rvm/bin
@@ -48,6 +48,7 @@ npm manifest:
       "jquery": "^2.2.4",
       "materialize-css": "^0.98.1",
       "ng2-bootstrap": "^1.4.2",
+      "ngx-uploader": "^2.2.8",
       "primeng": "^4.0.0-rc.2",
       "rxjs": "^5.1.0",
       "zone.js": "^0.8.4"
@@ -484,6 +485,20 @@ Lockfile:
       postcss "^5.2.16"
       postcss-value-parser "^3.2.3"
   
+  aws-sdk@^2.41.0:
+    version "2.41.0"
+    resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.41.0.tgz#930c15ae7ef4532bb8912c4c36a18b0023fd74c2"
+    dependencies:
+      buffer "4.9.1"
+      crypto-browserify "1.0.9"
+      jmespath "0.15.0"
+      querystring "0.2.0"
+      sax "1.2.1"
+      url "0.10.3"
+      uuid "3.0.1"
+      xml2js "0.4.17"
+      xmlbuilder "4.2.1"
+  
   aws-sign2@~0.6.0:
     version "0.6.0"
     resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
@@ -763,7 +778,7 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
   
-  buffer@^4.3.0:
+  buffer@4.9.1, buffer@^4.3.0:
     version "4.9.1"
     resolved "https://registry.yarnpkg.com/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
     dependencies:
@@ -1162,6 +1177,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
     dependencies:
       boom "2.x.x"
+  
+  crypto-browserify@1.0.9:
+    version "1.0.9"
+    resolved "https://registry.yarnpkg.com/crypto-browserify/-/crypto-browserify-1.0.9.tgz#cc5449685dfb85eb11c9828acc7cb87ab5bbfcc0"
   
   crypto-browserify@^3.11.0:
     version "3.11.0"
@@ -2636,6 +2655,10 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/jasminewd2/-/jasminewd2-2.0.0.tgz#10aacd2c588c1ceb6a0b849f1a7f3f959f777c91"
   
+  jmespath@0.15.0:
+    version "0.15.0"
+    resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"
+  
   jodid25519@^1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
@@ -3143,6 +3166,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ng2-bootstrap/-/ng2-bootstrap-1.6.0.tgz#5daef103700ed0595680cf4022ab2540f93c50d4"
     dependencies:
       moment "2.18.1"
+  
+  ngx-uploader@^2.2.8:
+    version "2.2.8"
+    resolved "https://registry.yarnpkg.com/ngx-uploader/-/ngx-uploader-2.2.8.tgz#a6063781e89915bf4a217f56bd3b8c375b59fb79"
   
   no-case@^2.2.0:
     version "2.3.1"
@@ -4239,6 +4266,10 @@ Lockfile:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/sax/-/sax-0.6.1.tgz#563b19c7c1de892e09bfc4f2fc30e3c27f0952b9"
   
+  sax@1.2.1:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
+  
   sax@>=0.6.0, sax@~1.2.1:
     version "1.2.2"
     resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
@@ -4950,6 +4981,13 @@ Lockfile:
       querystringify "0.0.x"
       requires-port "1.0.x"
   
+  url@0.10.3:
+    version "0.10.3"
+    resolved "https://registry.yarnpkg.com/url/-/url-0.10.3.tgz#021e4d9c7705f21bbf37d03ceb58767402774c64"
+    dependencies:
+      punycode "1.3.2"
+      querystring "0.2.0"
+  
   url@^0.11.0:
     version "0.11.0"
     resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
@@ -4990,13 +5028,13 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.0.tgz#0294fb922bb9375153541c4f7096231f287c8af8"
   
+  uuid@3.0.1, uuid@^3.0.0:
+    version "3.0.1"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+  
   uuid@^2.0.2:
     version "2.0.3"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
-  
-  uuid@^3.0.0:
-    version "3.0.1"
-    resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
   
   v8flags@^2.0.11:
     version "2.0.11"
@@ -5246,6 +5284,13 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
   
+  xml2js@0.4.17, xml2js@^0.4.17:
+    version "0.4.17"
+    resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.17.tgz#17be93eaae3f3b779359c795b419705a8817e868"
+    dependencies:
+      sax ">=0.6.0"
+      xmlbuilder "^4.1.0"
+  
   xml2js@0.4.4:
     version "0.4.4"
     resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.4.tgz#3111010003008ae19240eba17497b57c729c555d"
@@ -5253,14 +5298,7 @@ Lockfile:
       sax "0.6.x"
       xmlbuilder ">=1.0.0"
   
-  xml2js@^0.4.17:
-    version "0.4.17"
-    resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.17.tgz#17be93eaae3f3b779359c795b419705a8817e868"
-    dependencies:
-      sax ">=0.6.0"
-      xmlbuilder "^4.1.0"
-  
-  xmlbuilder@>=1.0.0, xmlbuilder@^4.1.0:
+  xmlbuilder@4.2.1, xmlbuilder@>=1.0.0, xmlbuilder@^4.1.0:
     version "4.2.1"
     resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-4.2.1.tgz#aa58a3041a066f90eaa16c2f5389ff19f3f461a5"
     dependencies:
@@ -5362,14 +5400,5 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.5.tgz#7906e017482cbff4c3f079c5c34305ce941f5ba2"
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.0.tgz: tunneling socket could not be established, cause=connect ECONNREFUSED 168.176.55.16:8080
-      at ClientRequest.onError (/usr/share/yarn/node_modules/tunnel-agent/index.js:176:17)
-      at ClientRequest.g (events.js:291:16)
-      at emitOne (events.js:96:13)
-      at ClientRequest.emit (events.js:188:7)
-      at Socket.socketErrorListener (_http_client.js:309:9)
-      at emitOne (events.js:96:13)
-      at Socket.emit (events.js:188:7)
-      at emitErrorNT (net.js:1281:8)
-      at _combinedTickCallback (internal/process/next_tick.js:80:11)
-      at process._tickCallback (internal/process/next_tick.js:104:9)
+  Error: EACCES: permission denied, mkdir '/home/rodesv/projects/picstory/frontend/picstory/node_modules/request/node_modules/uuid'
+      at Error (native)
