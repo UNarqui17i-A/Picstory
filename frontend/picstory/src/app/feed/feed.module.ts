@@ -4,14 +4,15 @@ import { WallComponent } from './wall/wall.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PostComponent } from './post/post.component';
 import { NgUploaderModule } from "ngx-uploader";
-import { MdCardModule, MdInputModule } from "@angular/material";
+import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
     NgUploaderModule,
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonModule
   ],
   declarations: [WallComponent, NewsfeedComponent, PostComponent]
 })
