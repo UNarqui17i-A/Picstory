@@ -25,3 +25,8 @@ DOMAIN = {
 
 #Allowed CRUD Methods
 RESOURCE_METHODS = ['POST']
+
+#Enabling fucking CORS
+#X_DOMAINS = '*'
+X_HEADERS = ['Content-Type','Authorization','Access-Control-Allow-Origin','If-Match']
+

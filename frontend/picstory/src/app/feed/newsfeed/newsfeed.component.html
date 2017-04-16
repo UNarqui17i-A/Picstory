@@ -1,1 +1,22 @@
-<app-post *ngFor="let post of posts" [post]="post"></app-post>
+<div class="col-md-6 col-md-offset-3">
+  <md-card>
+    <md-card-header>
+      <h4 class="text-center">Share us something</h4>
+    </md-card-header>
+    <md-card-content>
+      <p>
+        <md-input-container>
+          <textarea ></textarea>
+        </md-input-container>
+      </p>
+    </md-card-content>
+  </md-card>
+</div>
+
+
+<div class="hidden">
+  <input type="file" accept="image/*" (change)="changeListener($event)">
+  <button (click)="uploadPhoto()"> Send</button>
+</div>
+
+<app-post class="col-md-6 col-md-offset-0" *ngFor="let post of posts" [post]="post"></app-post>

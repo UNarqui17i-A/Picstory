@@ -24,6 +24,7 @@
     "@angular/router": "^4.0.0",
     "@types/jquery": "^2.0.41",
     "angular2-materialize": "^6.7.2",
+    "aws-sdk": "^2.41.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
@@ -32,6 +33,7 @@
     "jquery": "^2.2.4",
     "materialize-css": "^0.98.1",
     "ng2-bootstrap": "^1.4.2",
+    "ngx-uploader": "^2.2.8",
     "primeng": "^4.0.0-rc.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"

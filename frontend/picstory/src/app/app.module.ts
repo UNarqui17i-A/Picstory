@@ -13,6 +13,7 @@ import { FeedModule } from './feed/feed.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { StaticModule } from './static/static.module';
+import { NgUploaderModule } from "ngx-uploader";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { StaticModule } from './static/static.module';
     AppRoutingModule,
     MaterialModule,
     MaterializeModule,
+    NgUploaderModule,
 
     FeedModule,
     LoginModule,
