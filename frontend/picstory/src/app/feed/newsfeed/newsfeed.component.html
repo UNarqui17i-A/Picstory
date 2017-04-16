@@ -1,1 +1,20 @@
-<app-post *ngFor="let post of posts" [post]="post"></app-post>
+<!--<div class="drag-n-drop-container"
+     ngFileDrop
+     [options]="options"
+     (onUpload)="handleUpload($event)"
+     [ngClass]="{'file-over': hasBaseDropZoneOver}"
+     (onFileOver)="fileOverBase($event)">
+  <h1>Drag & Drop</h1>
+  <label class="btn text-center">
+    <input type="file"
+           class="hidden"
+           ngFileSelect
+           [options]="options"
+           (onUpload)="handleUpload($event)">
+    Browse
+  </label>
+</div>-->
+<input type="file" accept="image/*" (change)="changeListener($event)">
+<button (click)="uploadPhoto()"> Send</button>
+
+<app-post class="col-md-6 col-md-offset-0" *ngFor="let post of posts" [post]="post"></app-post>
