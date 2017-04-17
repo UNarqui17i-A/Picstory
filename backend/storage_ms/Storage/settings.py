@@ -1,3 +1,6 @@
+#Change Host
+def_host='0.0.0.0'
+
 #Default port to expose service
 def_port = 8015
 

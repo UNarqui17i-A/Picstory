@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { RestService } from './rest.service';
-
+import { Router } from '@angular/router';
+import { AuthenticationService } from './auth.service';
 @Component({
   selector: 'app-login-app',
   templateUrl: './login-app.component.html',
-  styleUrls: ['./login-app.component.css']
+  styleUrls: ['./login-app.component.css'],
+  providers: [AuthenticationService]
 })
 export class LoginAppComponent implements OnInit {
 
   loginForm: FormGroup;
   response: string;
-  constructor(private fb: FormBuilder, private restService: RestService) { }
+  error: string;
+  constructor(private fb: FormBuilder,
+              private authenticationService: AuthenticationService,
+              private router: Router
+              ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -23,13 +28,14 @@ export class LoginAppComponent implements OnInit {
   loginUser(formValue: any, event: Event){
     let username = formValue.controls['username'].value
     let password = formValue.controls['password'].value
-    let request = JSON.stringify({username: username, password: password})
-    this.restService.postSignUp(request)
-      .subscribe(
-        response  => this.response = response,
-        error => error = error,
-        () => { console.log(this.response);}
-      );
+    this.authenticationService.login(username, password)
+      .subscribe(result => {
+        if (result === true) {
+          this.router.navigate(['/home', this.authenticationService.id]);
+        } else {
+          this.error = 'Username or password is incorrect';
+        }
+      });
   }
 
 }

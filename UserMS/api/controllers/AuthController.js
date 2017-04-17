@@ -51,7 +51,7 @@ module.exports = {
             sails.log(newAuth);
 
             return res.status(200).json({
-              user: user,
+              user: user.id, //changed to fit post_ms service
               token: token
             });
           });
@@ -126,4 +126,3 @@ module.exports = {
   }
 
 };
-

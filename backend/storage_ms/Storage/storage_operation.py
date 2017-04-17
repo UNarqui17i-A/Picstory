@@ -33,4 +33,4 @@ def delete():
         return json.dumps({'success': True}), 200
 
 if __name__ == '__main__':
-    app.run(port=st.def_port)
+    app.run(host=st.def_host, port=st.def_port)

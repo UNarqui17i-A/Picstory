@@ -1,0 +1,4 @@
+storage-ms:
+    build: .
+    ports:
+    - 8015:8015

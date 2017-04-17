@@ -17,7 +17,9 @@
       <div class="form-group" [ngClass]="{'has-error':!loginForm.controls['password'].valid}">
         <input type="password" class="form-control" placeholder="password" formControlName="password">
       </div>
-      <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Sing in</button>
+      <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Sign in</button>
+      <a href="/register">Sign up</a>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
     </form>
   </div>
 </div>
