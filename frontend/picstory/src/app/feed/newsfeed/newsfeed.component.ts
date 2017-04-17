@@ -45,6 +45,8 @@ export class NewsfeedComponent implements OnInit {
       response => {aux = response},
       error => this.error = error,
       () => {
+        if (aux == null || typeof aux === 'undefined' || aux == '')
+          this.page-=1;
         if(this.posts.length >= 5)
           this.posts =  this.desserialize(aux, this.posts)
         else
