@@ -6,9 +6,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ComService {
 
-  ipHost: string = '192.168.99.101';
-  urlPostUser: string = 'http://'+this.ipHost+':8010/posts?user_id=';
-  urlPosts: string = 'http://'+this.ipHost+':8010/posts';
+  private ipHost: string = '192.168.99.101';
+  private urlGetPostUser: string = 'http://'+this.ipHost+':8010/posts?user_id=';
+  private urlGetPostsByPage: string = 'http://' + this.ipHost + ':8010/posts?page=';
+  private urlPostPublication: string = 'http://'+this.ipHost+':8010/posts';
 
   constructor(private http: Http) { }
 
@@ -16,15 +17,22 @@ export class ComService {
   getPostsUser(idUser: string){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.get(this.urlPostUser+idUser, requestOptions)
+    return this.http.get(this.urlGetPostUser+idUser, requestOptions)
       .map( (res: Response) => res.json() )
       .catch(this.handleError)
   }
 
-  getPosts(){
+  publishPost(body: string){
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({ headers: headers });
+    return this.http.post(this.urlPostPublication, body, requestOptions)
+      .catch(this.handleError)
+  }
+
+  getPostsByPage(numPage: number){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.get(this.urlPosts, requestOptions)
+    return this.http.get(this.urlGetPostsByPage+numPage, requestOptions)
       .map( (res: Response) => res.json() )
       .catch(this.handleError)
   }

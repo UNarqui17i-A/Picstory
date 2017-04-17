@@ -6,10 +6,12 @@ import { PostComponent } from './post/post.component';
 import { NgUploaderModule } from "ngx-uploader";
 import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
 import { ImageUploadModule } from "angular2-image-upload";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     NgUploaderModule,
     MdCardModule,
     MdInputModule,

@@ -24,7 +24,7 @@ def create():
     content = request.get_json(silent = True)
     s3.Bucket(st.main_bucket).put_object(Key=content['uuid'], Body=content['codedimage'])
     return json.dumps({'uuid':content['uuid'],'codedimage' : content['codedimage']})
-
+    
 #Deletes an object from main_bucket
 @app.route('/delete',methods=['POST'])
 def delete():

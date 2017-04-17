@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 //import * as AWS from 'aws-sdk';
-import { Http, RequestOptions, Headers } from "@angular/http";
+import { Http, RequestOptions, Headers, Response } from "@angular/http";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AWSService {
-  ipHostImage = 'localhost';
-  urlImageUpload = 'http://'+ this.ipHostImage + ':8015/image/create';
+  private ipHostImage = 'localhost';
+  private urlImageUpload = 'http://'+ this.ipHostImage + ':8015/image/create';
 
   constructor(private http: Http ) {
   }
 
-  sendImage(image: string){
+  getImage(image_url: string){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.post(this.urlImageUpload, { 'uuid' : '11', 'codedimage': image}, requestOptions)
+    return this.http.get(image_url, requestOptions)
       .catch(this.handleError)
   }
 

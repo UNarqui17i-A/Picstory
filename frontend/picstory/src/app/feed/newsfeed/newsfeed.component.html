@@ -1,12 +1,3 @@
-<image-upload
-  [url]="'http://localhost:8015/image/create'"
-  [headers]="[
-    {header: 'Content-Type', value: 'application/json'}
-  ]"
->
-
-</image-upload>
-
 <div class="col-md-6 col-md-offset-3">
   <md-card>
     <md-card-header>
@@ -15,20 +6,21 @@
       </div>
     </md-card-header>
     <md-card-content>
-      <form>
-        <p>
-          <md-input-container color="#0000FF" class="container_md">
-            <textarea mdInput placeholder="Your story goes here!"></textarea>
-          </md-input-container>
-        </p>
-      </form>
+        <md-input-container style="width: 100%">
+          <input mdInput [formControl]="title" type="text">
+          <div *ngIf="title.invalid && title.touched">
+            <div class="text-danger text-center">You have to give it a title</div>
+          </div>
+        </md-input-container>
     </md-card-content>
+    <image-upload [max]="1" [buttonCaption]="'Select Images'" (uuidPhoto)="getUUID($event)" [url]="'http://localhost:8015/image/create'" [headers]="[{header: 'Content-Type', value: 'application/json'}]">
+    </image-upload>
+
+    <md-card-actions>
+      <button md-raised-button (click)="newPost(titlePost)">Send</button>
+    </md-card-actions>
   </md-card>
 </div>
 
-
-<div class="hidden">
-
-</div>
-
 <app-post class="col-md-6 col-md-offset-0 col-sm-6" *ngFor="let post of posts" [post]="post"></app-post>
+<button md-raised-button (click)="newsFeed()" style="width: 100%">Load more post</button>
