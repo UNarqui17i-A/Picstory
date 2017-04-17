@@ -7,8 +7,8 @@ export class RestService {
 
   constructor(private http: Http) { }
 
-  ipHost: string = "199.168.99.101";
-  urlNewUser: string = 'http://'+this.ipHost+':8005/user';
+  ipHost: string = "localhost"; //Change to 192.168.99.101 when using Docker
+  urlNewUser: string = 'http://'+this.ipHost+':8000/auth/login'; //change to 8005 when using Docker
 
   postSignUp(body : string){
     let headers = new Headers({'Content-Type': 'application/json'});
