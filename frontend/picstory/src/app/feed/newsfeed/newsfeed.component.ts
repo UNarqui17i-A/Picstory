@@ -1,7 +1,8 @@
-import { Component, Inject, NgZone, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
 import { FormControl, Validators } from "@angular/forms";
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-newsfeed',
@@ -19,7 +20,7 @@ export class NewsfeedComponent implements OnInit {
   location = {};
   title: FormControl;
 
-  constructor(private comService: ComService) {
+  constructor(private comService: ComService, private snackbar: MdSnackBar) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
   }
 
@@ -34,6 +35,10 @@ export class NewsfeedComponent implements OnInit {
 
   setPosition(position){
     this.location = position.coords;
+  }
+
+  checkTypeImage(){
+    return typeof this.image === 'undefined';
   }
 
   newsFeed(){
@@ -71,11 +76,19 @@ export class NewsfeedComponent implements OnInit {
     let longitude = this.location['longitude'];
     this.comService.publishPost(JSON.stringify({user_id, title, image_url, latitude, longitude}))
       .subscribe(
-        () => { this.newsFeed(); }
+        () => { this.openSnackBar("Your post have been saved!") }
       )
+    this.title.reset();
+    this.ngOnInit();
   }
 
   getUUID(event: any){
     this.image = 'https://s3.amazonaws.com/picstorybucket/'+event;
+  }
+
+  openSnackBar( message: string ){
+    this.snackbar.open(message, null, {
+      duration: 3000
+    });
   }
 }

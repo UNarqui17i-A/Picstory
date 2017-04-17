@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { WallComponent } from './wall/wall.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PostComponent } from './post/post.component';
-import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
+import { MdCardModule, MdInputModule, MdButtonModule, MdSnackBarModule } from "@angular/material";
 import { ImageUploadModule } from "angular2-image-upload";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RatingModule } from "ng2-bootstrap";
@@ -17,7 +17,8 @@ import { RatingModule } from "ng2-bootstrap";
     MdInputModule,
     MdButtonModule,
     ImageUploadModule,
-    RatingModule
+    RatingModule,
+    MdSnackBarModule
 
   ],
   declarations: [WallComponent, NewsfeedComponent, PostComponent]
