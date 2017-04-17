@@ -15,6 +15,7 @@ import { RegisterModule } from './register/register.module';
 import { StaticModule } from './static/static.module';
 import { NgUploaderModule } from "ngx-uploader";
 import { ImageUploadModule } from "angular2-image-upload";
+import { AuthGuard} from './guards/auth.guard'
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { ImageUploadModule } from "angular2-image-upload";
     RegisterModule,
     StaticModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
