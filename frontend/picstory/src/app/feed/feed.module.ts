@@ -4,14 +4,20 @@ import { WallComponent } from './wall/wall.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PostComponent } from './post/post.component';
 import { NgUploaderModule } from "ngx-uploader";
-import { MdCardModule, MdInputModule } from "@angular/material";
+import { MdCardModule, MdInputModule, MdButtonModule } from "@angular/material";
+import { ImageUploadModule } from "angular2-image-upload";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     NgUploaderModule,
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonModule,
+    ImageUploadModule
+
   ],
   declarations: [WallComponent, NewsfeedComponent, PostComponent]
 })
