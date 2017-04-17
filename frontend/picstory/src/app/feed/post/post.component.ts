@@ -43,7 +43,6 @@ export class PostComponent implements OnInit {
       this.rate = scorer[0].scored;
       this.oldValue = this.rate;
     }
-
   }
 
   getScoreObject(){
@@ -56,13 +55,12 @@ export class PostComponent implements OnInit {
 
   reportRate(event: any){
     var request: string;
-    console.log("rate at com " , this.rate)
     if( this.oldValue == null || typeof this.oldValue == 'undefined'){
       request = JSON.stringify(
         {
           'post_id': this.post.id,
-          /*'user_id': JSON.parse(localStorage.getItem('currentUser')),*/
-          'user_id' : 'default',
+          'user_id': JSON.parse(localStorage.getItem('currentUser')).username,
+          /*'user_id' : 'default',*/
           'scored' : this.rate
         });
       this.comService.scorePost(request)
@@ -75,7 +73,8 @@ export class PostComponent implements OnInit {
         {
           'post_id': this.post.id,
           /*'user_id': JSON.parse(localStorage.getItem('currentUser')),*/
-          'user_id' : 'default',
+          'user_id': JSON.parse(localStorage.getItem('currentUser')).username,
+          /*'user_id' : 'default',*/
           'scored' : this.rate
         });
       this.comService.updateScore(scorer[0].id, request)
