@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '', component: LoginAppComponent
   },
   {
-    path: 'home', component: NewsfeedComponent
+    path: 'home', component: NewsfeedComponent, canActivate: [AuthGuard]
   },
   {
     path: 'home/:id', component: WallComponent, canActivate: [AuthGuard]
