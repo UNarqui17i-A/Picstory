@@ -48,10 +48,10 @@ module.exports = {
             token: token,
             expiredAt: expired
           }).exec((err, newAuth) => {
-            sails.log(newAuth);
+            sails.l og(newAuth);
 
             return res.status(200).json({
-              user: user,
+              user: user.id, //changed to fit post_ms
               token: token
             });
           });
