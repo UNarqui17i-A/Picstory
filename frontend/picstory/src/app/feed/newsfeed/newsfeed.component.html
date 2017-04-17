@@ -17,7 +17,7 @@
     </image-upload>
 
     <md-card-actions>
-      <button md-raised-button (click)="newPost(titlePost)">Send</button>
+      <button md-raised-button (click)="newPost(titlePost)" [disabled]="!title.valid || checkTypeImage()">Send</button>
     </md-card-actions>
   </md-card>
 </div>
