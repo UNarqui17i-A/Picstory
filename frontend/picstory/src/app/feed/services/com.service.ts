@@ -14,10 +14,10 @@ export class ComService {
   constructor(private http: Http) { }
 
 
-  getPostsUser(idUser: string){
+  getPostsUserByPage(idUser: string, page: number){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.get(this.urlGetPostUser+idUser, requestOptions)
+    return this.http.get(this.urlGetPostUser+idUser+'&&page='+ page, requestOptions)
       .map( (res: Response) => res.json() )
       .catch(this.handleError)
   }

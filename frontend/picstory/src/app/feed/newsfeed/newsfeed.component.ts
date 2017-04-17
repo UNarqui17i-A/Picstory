@@ -63,7 +63,8 @@ export class NewsfeedComponent implements OnInit {
   }
 
   newPost(){
-    let user_id: string = "default";
+    //let user_id: string = "user_1UXS";
+    let user_id = JSON.parse(localStorage.getItem('currentUser'));
     let title: string = this.title.value;
     let image_url: string = this.image ? this.image : "default";
     let latitude = this.location['latitude'];
