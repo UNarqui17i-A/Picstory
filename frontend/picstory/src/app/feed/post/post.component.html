@@ -1,24 +1,34 @@
-<div class="container">
-  <div class="row">
+<div class="post" layout="row">
+
     <md-card>
+
       <md-card-header>
-        {{post.user_id}}
+        <md-card-title><h3>{{post.title}}</h3></md-card-title>
+        <md-card-subtitle>
+          <h5> {{post.user_id}} </h5>
+        </md-card-subtitle>
       </md-card-header>
-      <figure class="post">
-        <img md-card-image src="{{post.image_url}}">
-        <figcaption>
-          <h2>{{post.total_score}}</h2>
-        </figcaption>
-      </figure>
+
       <md-card-content>
-        <h2>{{post.title}}</h2>
+
+        <figure> <img md-card-image src="{{post.image_url}}"> </figure>
+
+        <div class="md-card-footer">
+
+            <rating *ngIf="!isWall"  [(ngModel)]="rate" (ngModelChange)="reportRate($event)" [max]="max" [readonly]="isReadonly"
+                    (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
+                    [titles]="['one','two','three']"></rating>
+
+            <span class="label"
+                  [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+                  [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+
+          <span class="rated">   {{post.total_score}}</span>
+
+        </div>
+
       </md-card-content>
-      <rating *ngIf="!isWall"  [(ngModel)]="rate" (ngModelChange)="reportRate($event)" [max]="max" [readonly]="isReadonly"
-              (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
-              [titles]="['one','two','three']"></rating>
-      <span class="label"
-            [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
-            [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+
     </md-card>
-  </div>
+
 </div>

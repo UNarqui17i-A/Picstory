@@ -8,6 +8,7 @@ import { ComService } from "../services/com.service";
   styleUrls: ['./post.component.css'],
   providers: [ AWSService, ComService ]
 })
+
 export class PostComponent implements OnInit {
   @Input() post: any;
   @Input() isWall: boolean = false;

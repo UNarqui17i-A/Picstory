@@ -27,8 +27,8 @@ import { HomeComponent } from './home/home.component'
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule,
     MaterializeModule,
+    MaterialModule,
     ImageUploadModule.forRoot(),
 
     FeedModule,

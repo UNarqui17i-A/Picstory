@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'posts/', component: NewsfeedComponent
+    path: 'posts', component: NewsfeedComponent
   },
   {
     path: 'posts/:id', component: WallComponent , canActivate: [AuthGuard]
