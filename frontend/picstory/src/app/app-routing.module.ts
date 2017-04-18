@@ -5,19 +5,24 @@ import { WallComponent } from './feed/wall/wall.component';
 import { NewsfeedComponent } from './feed/newsfeed/newsfeed.component';
 import { LoginAppComponent } from "./login/login-app/login-app.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
-    path: '', component: LoginAppComponent
+    path: '', component: HomeComponent
   },
   {
-    path: 'home', component: NewsfeedComponent
+    path: 'auth',
+    children: [
+      { path: 'login', component: LoginAppComponent },
+      { path: 'signin', component: FormRegisterComponent }
+    ]
   },
   {
-    path: 'home/:id', component: WallComponent, canActivate: [AuthGuard]
+    path: 'posts/', component: NewsfeedComponent
   },
   {
-    path: 'register', component: FormRegisterComponent
+    path: 'posts/:id', component: WallComponent, canActivate: [AuthGuard]
   }
 ];
 
