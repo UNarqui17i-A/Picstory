@@ -28,7 +28,7 @@
           <li> <a href="/register"> Register </a> </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <button type="button" class="btn btn-danger" [disabled]="isAuth" (onclick)="redirect()" (click)="eraseToken() ">Logout</button>
         </ul>
     </div>
   </div>
