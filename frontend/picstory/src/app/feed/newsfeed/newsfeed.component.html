@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" class="uploader" >
+
+    <md-card>
+
+      <md-card-header>
+        <div class="text-center">
+          <md-card-title>Share us something</md-card-title>
+        </div>
+      </md-card-header>
+
+      <md-card-content>
+        <md-input-container style="width: 100%">
+          <input mdInput [formControl]="title" type="text">
+          <div *ngIf="title.invalid && title.touched">
+            <div class="text-danger text-center">You have to give it a title</div>
+          </div>
+        </md-input-container>
+      </md-card-content>
+
+      <image-upload [max]="1" [buttonCaption]="'Select Images'" (uuidPhoto)="getUUID($event)" [url]="'http://localhost:8015/image/create'" [headers]="[{header: 'Content-Type', value: 'application/json'}]"> </image-upload>
+
+      <md-card-actions>
+        <button md-raised-button (click)="newPost(titlePost)" [disabled]="!title.valid || checkTypeImage()">Send</button>
+      </md-card-actions>
+
+    </md-card>
+
+  </div>
+</div>
+
+<div class="row">
+  <app-post class="col-md-6 col-md-offset-0 col-sm-6" *ngFor="let post of posts" [post]="post"></app-post>
+</div>
+
+<div class="row">
+  <button md-fab (click)="newsFeed()"><md-icon>low_priority</md-icon></button>
+</div>

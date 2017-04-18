@@ -1,0 +1,36 @@
+.post{
+  margin: 30px 10px;
+}
+
+md-card {
+  padding: 0;
+  margin: 0;
+}
+
+md-card-header {
+  margin: auto 20px 10px 20px;
+}
+
+.md-card-footer {
+  display: inline-block;
+  padding: 20px;
+}
+
+figure {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+}
+
+figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}

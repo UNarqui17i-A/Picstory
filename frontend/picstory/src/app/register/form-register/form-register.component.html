@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 well">
+    <h1 >Sign Up <br><small> It's free :D </small></h1>
+    <form [formGroup]="registerForm" (ngSubmit)="signUp(registerForm, $event)" >
+      <div class="form-group"  [ngClass]="{'has-error':!registerForm.controls['firstName'].valid}">
+        <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+
+        <div *ngIf="registerForm.controls['firstName'].hasError('pattern')">
+          <div class="text-danger text-center">Your name can not have numbers or symbols in it</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].hasError('required')">
+          <div class="text-danger text-center">Field name is required</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].hasError('minLength')">
+          <div class="text-danger">Your name must be at least three chars long</div>
+        </div>
+
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['lastName'].valid}">
+        <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+
+        <div *ngIf="registerForm.controls['lastName'].hasError('pattern')">
+          <div class="text-danger text-center">Your name can not have numbers or symbols in it</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['lastName'].touched && registerForm.controls['lastName'].hasError('required')">
+          <div class="text-danger text-center">Last name is required</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['lastName'].touched && registerForm.controls['lastName'].hasError('minLength')">
+          <div class="text-danger">Your name must be at least three chars long</div>
+        </div>
+
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['username'].valid}">
+        <input type="username" class="form-control" placeholder="username" formControlName="username">
+
+        <div *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].hasError('required')">
+          <div class="text-danger text-center">Username is required</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].hasError('minLength')">
+          <div class="text-danger">Your name must be at least five chars long</div>
+        </div>
+
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['email'].valid}">
+        <input type="email" class="form-control" placeholder="email" formControlName="email">
+
+        <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')">
+          <div class="text-danger text-center">The email is required</div>
+        </div>
+
+        <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('validateEmail')">
+          <div class="text-danger text-center">Email format not valid</div>
+        </div>
+
+      </div>
+
+      <div class="form-group" formGroupName="passwords" [ngClass]="{'has-error':!registerForm.controls['passwords'].valid}">
+        <div class="form-group" >
+          <input type="password" class="form-control" placeholder="password" formControlName="password">
+        </div>
+        <div class="form-group" >
+          <input type="password" class="form-control" placeholder="confirm your password" formControlName="con_password">
+
+        </div>
+
+        <div *ngIf="registerForm.get('passwords').get('password').touched && registerForm.get('passwords').get('con_password').touched">
+          <div class="text-danger text-center">Passwords are required</div>
+        </div>
+
+        <div *ngIf="registerForm.get('passwords').get('con_password').touched &&  registerForm.controls['passwords'].touched && registerForm.controls['passwords'].hasError('passwordsEqual')">
+          <div class="text-danger text-center">Passwords must match</div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <textarea class="form-control" formControlName="bio" rows="5" placeholder="Tell us something about yourself" ></textarea>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-error':!registerForm.controls['birthDate'].valid}">
+        <p-calendar showOnFocus="false" required="true"  placeholder="your birthday comes here!" formControlName="birthDate" dateFormat="dd.mm.yy" [monthNavigator]="true" [yearNavigator]="true"  yearRange="1930:1999"></p-calendar>
+
+        <div *ngIf="registerForm.controls['birthDate'].hasError('required') && registerForm.controls['birthDate'].touched">
+          <div class="text-danger">Please provide your birthday</div>
+        </div>
+
+      </div>
+
+      <button class="btn btn-default" type="submit" [disabled]="!registerForm.valid">Submit</button>
+    </form>
+  </div>
+</div>
+
