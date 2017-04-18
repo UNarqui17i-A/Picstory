@@ -1,0 +1,68 @@
+.footer {
+  z-index: 0;
+  position: relative;
+  height: 230px;
+  background: none repeat scroll 0% 0% #1b2429;
+  font-size: 12px;
+}
+
+.footer .quote {
+  z-index: 1;
+  position: fixed;
+  left: 50%;
+  bottom: 140px;
+  margin-left: -450px;
+  width: 900px;
+  list-style: outside none none;
+  text-align: center;
+
+  font-family: 'Gloria Hallelujah', cursive;
+  font-style: italic;
+  color: #606a72;
+  font-size: 3.1em;
+}
+
+.footer .quote b{
+  z-index: 1;
+  font-weight: bold;
+  color: #747d83;
+  font-size: 1.2em;
+}
+
+.footer .bottom{
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  color: #747d83;
+  font-size: 1.1rem;
+}
+
+.footer .bottom .left{
+  position: fixed;
+  bottom: 30px;
+  left: 8%;
+}
+
+.footer .bottom .right {
+  position: fixed;
+  bottom: 30px;
+  right: 8%;
+  text-align: right;
+  color: #747d83;
+}
+
+.footer .bottom .center img {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  bottom: 30px;
+  left: 50%;
+}
+
+.footer .bottom .center img {
+  position: fixed;
+  width: 120px;
+  margin-left: -60px;
+  bottom: 30px;
+  left: 50%;
+}

@@ -1,0 +1,34 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.signup-box {
+  display: inline-block;
+  padding: 32px 48px 0px 48px;
+  border: 1px solid #EEE;
+}
+
+.input-field input:focus + label {
+  color: #2196F3 !important;
+}
+
+.row .input-field input:focus {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow:  0 1px 0 0 #2196F3 !important;
+}
+
+.input-field .validate.input-error {
+  border-bottom: 1px solid red !important;
+  box-shadow:  0 1px 0 0 red !important;
+}
+
+a:hover, a:focus, a:active, a:visited {
+  color:  white;
+  text-decoration: none;
+}

@@ -1,26 +1,31 @@
+import { ImageUploadModule } from "angular2-image-upload";
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterializeModule } from 'angular2-materialize';
+import { MaterialModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
-import { MaterializeModule } from 'angular2-materialize';
+import { NgModule } from '@angular/core';
 import 'hammerjs';
 
+import { ResponsesModule } from './responses/responses.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FeedModule } from './feed/feed.module';
 import { LoginModule } from './login/login.module';
-import { RegisterModule } from './register/register.module';
-import { ImageUploadModule } from "angular2-image-upload";
+import { AuthModule } from './auth/auth.module';
+import { FeedModule } from './feed/feed.module';
 import { AuthGuard} from './guards/auth.guard';
-import { HomeComponent } from './home/home.component'
 
+import { HomeComponent } from './home/home.component';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +37,8 @@ import { HomeComponent } from './home/home.component'
     ImageUploadModule.forRoot(),
 
     FeedModule,
-    LoginModule,
-    RegisterModule,
+    AuthModule,
+    ResponsesModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

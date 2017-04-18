@@ -13,4 +13,3 @@ describe('RestService', () => {
     expect(service).toBeTruthy();
   }));
 });
-

@@ -23,7 +23,7 @@ module.exports = {
     User.findOne({ username: username }).exec((err, user) => {
 
       if (!user) {
-        return res.status(401).json({ message: 'User not found.' });
+        return res.status(401).json({ message: 'Username or Password invalid.' });
       }
 
       user.comparePassword(password, function(err, valid) {
@@ -32,12 +32,11 @@ module.exports = {
         }
 
         if (! valid) {
-          return res.status(401).json({ message: 'Invalid Username or Password' });
+          return res.status(401).json({ message: 'Username or Password invalid.' });
         } else {
 
           let security = Math.random().toString(36).slice(2);
           let payload = user.id + '_' + security;
-          sails.log(payload);
 
           token = TokenAuth.generateToken({ id: payload });
           let expired = new Date();
@@ -48,10 +47,8 @@ module.exports = {
             token: token,
             expiredAt: expired
           }).exec((err, newAuth) => {
-            sails.log(newAuth);
-
             return res.status(200).json({
-              user: user.id, //changed to fit post_ms service
+              user: user,
               token: token
             });
           });

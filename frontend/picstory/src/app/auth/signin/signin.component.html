@@ -1,0 +1,43 @@
+<div class="container center-align">
+  <h3>Sign In</h3>
+  <h5 class="blue-text">Please, log into your account</h5>
+
+  <div class="z-depth-1 grey lighten-4 row left-align signin-box">
+    <form [formGroup]="signinForm" (ngSubmit)="signin(signinForm, $event)">
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signinForm.controls['username'].touched && signinForm.controls['username'].hasError('required') }" name="username" type="text" formControlName="username">
+            <label for="username">Username</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signinForm.controls['password'].touched && signinForm.controls['password'].hasError('required') }" name="password" type="password" formControlName="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="col s12 btn btn-large waves-effect blue" [disabled]="signinForm.controls['password'].hasError('required') || signinForm.controls['password'].hasError('required')">Sign in</button>
+      </div>
+
+      <div class="row" *ngIf="error">
+        <div class="alert alert-danger">
+          {{ error }}
+        </div>
+      </div>
+
+      <div class="row">
+        <!--<a href="#" class="blue-text" [routerLink]="['/auth/forgot']">Forgot Password?</a>-->
+        <a href="#" class="blue-text" [routerLink]="['/auth/signup']">Create account</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+

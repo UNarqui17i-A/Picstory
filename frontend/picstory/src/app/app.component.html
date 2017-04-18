@@ -1,40 +1,7 @@
-<div class="header">
-
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="menu.open()">
-        <md-icon>menu</md-icon>
-    </button>
-
-    <span class="header-logo"> <a routerLink='/home'> <img style="max-width:120px; margin-top: -5px;" src='/assets/images/picstory.png' > </a> </span>
-
-  </md-toolbar>
-
-</div>
+<app-header></app-header>
 
 <div class="main-content">
   <router-outlet></router-outlet>
 </div>
 
-<div class="footer">
-
-  <div class="quote">
-    <b>"PicStory: </b> where good <b>stories </b> meet" - Forbes
-  </div>
-
-  <div class="bottom">
-    <div class="left">
-      <a class="fa fa-facebook-official" href="https://www.facebook.com/groups/1066331173495948/" style="font-size:18px;color:#747d83;" target="_blank"></a>
-      <span style="display:inline-block; width: 2px;"></span>
-      <a class="fa fa-github-alt" href="https://github.com/UNarqui17i-A/Picstory" style="font-size:20px;color:#747d83;" target="_blank"></a>
-      <span style="display:inline-block; width: 2px;"></span>
-      Software Architect UNAL
-    </div>
-    <div class="center">
-      <a routerLink='/home'> <img src='/assets/images/picstory.png' > </a>
-    </div>
-    <div class="right">
-      <p>Picstory © 2017. All rights reserved. </p>
-    </div>
-  </div>
-
-</div>
+<app-footer></app-footer>

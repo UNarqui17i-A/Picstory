@@ -1,5 +1,16 @@
-.login-box {
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.signin-box {
   display: inline-block;
+  width: 400px;
   padding: 32px 48px 0px 48px;
   border: 1px solid #EEE;
 }
@@ -11,4 +22,9 @@
 .row .input-field input:focus {
   border-bottom: 1px solid #2196F3 !important;
   box-shadow:  0 1px 0 0 #2196F3 !important;
+}
+
+.input-field .validate.input-error {
+  border-bottom: 1px solid red !important;
+  box-shadow:  0 1px 0 0 red !important;
 }

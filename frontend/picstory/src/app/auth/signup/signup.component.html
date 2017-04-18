@@ -1,0 +1,145 @@
+<div class="container center-align">
+  <h3>Sign Up</h3>
+  <h5 class="blue-text">It's free</h5>
+
+  <div class="z-depth-1 grey lighten-4 left-align signup-box">
+    <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm, $event)">
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['firstName'].touched && signupForm.controls['firstName'].hasError('required') }" name="firstName" type="text" formControlName="firstName">
+            <label for="firstName">First Name</label>
+          </div>
+
+          <div *ngIf="signupForm.controls['firstName'].hasError('pattern')">
+            <div class="text-danger text-center">Your name can not have numbers or symbols in it</div>
+          </div>
+
+          <div *ngIf="signupForm.controls['firstName'].touched && signupForm.controls['firstName'].hasError('required')">
+            <div class="text-danger text-center">First name is required</div>
+          </div>
+
+          <div *ngIf="signupForm.controls['firstName'].touched && signupForm.controls['firstName'].hasError('minLength')">
+            <div class="text-danger">Your name must be at least three chars long</div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['lastName'].touched && signupForm.controls['lastName'].hasError('required') }" name="lastName" type="text" formControlName="lastName">
+            <label for="lastName">Last Name</label>
+          </div>
+
+          <div *ngIf="signupForm.controls['lastName'].hasError('pattern')">
+            <div class="text-danger text-center">Your name can not have numbers or symbols in it</div>
+          </div>
+
+          <div *ngIf="signupForm.controls['lastName'].touched && signupForm.controls['lastName'].hasError('required')">
+            <div class="text-danger text-center">Last name is required</div>
+          </div>
+
+          <div *ngIf="signupForm.controls['lastName'].touched && signupForm.controls['lastName'].hasError('minLength')">
+            <div class="text-danger">Your name must be at least three chars long</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['username'].touched && signupForm.controls['username'].hasError('required') }" name="username" type="text" formControlName="username">
+            <label for="username">Username</label>
+          </div>
+
+          <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].hasError('required')">
+            <div class="text-danger text-center">Username is required</div>
+          </div>
+
+          <div *ngIf="signupForm.controls['username'].touched && signupForm.controls['username'].hasError('minLength')">
+            <div class="text-danger">Your name must be at least five chars long</div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['email'].touched && signupForm.controls['email'].hasError('required') }" name="email" type="email" formControlName="email">
+            <label for="email">Email</label>
+          </div>
+
+
+          <div *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].hasError('required')">
+            <div class="text-danger text-center">The email is required</div>
+          </div>
+
+          <div *ngIf="!signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched && signupForm.controls['email'].hasError('validateEmail')">
+            <div class="text-danger text-center">Email format not valid</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" formGroupName="passwords">
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['passwords'].get('password').touched && signupForm.controls['passwords'].get('password').hasError('required') }" name="password" type="password" formControlName="password">
+            <label for="password">Password</label>
+          </div>
+
+          <div *ngIf="signupForm['passwords'] && signupForm['passwords']['password'] && signupForm['passwords']['password'].touched && signupForm['passwords']['password'].hasError('required')">
+            <div class="text-danger text-center">Password is required</div>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="input-field">
+            <input class="validate" [ngClass]="{ 'input-error': signupForm.controls['passwords'].get('confirmPassword').touched && signupForm.controls['passwords'].get('confirmPassword').hasError('required') }" name="confirmPassword" type="password" formControlName="confirmPassword">
+            <label for="confirmPassword">Confirm Password</label>
+          </div>
+          <div *ngIf="signupForm['passwords'] && signupForm['passwords']['confirmPassword'] && signupForm['passwords']['confirmPassword'].touched && signupForm['passwords']['confirmPassword'].hasError('required')">
+            <div class="text-danger text-center">ConfirmPassword is required</div>
+          </div>
+        </div>
+
+        <div *ngIf="signupForm['passwords'] && signupForm['passwords']['password'] && signupForm['passwords']['confirmPassword'] && signupForm['passwords']['password'].touched && signupForm.controls['passwords']['confirmPassword'].touched && signupForm.controls['passwords'].hasError('passwordsEqual')">
+          <div class="text-danger text-center">Passwords must match</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <input formControlName="birthDate" dateFormat="dd/mm/yy" class="validate" [ngClass]="{ 'input-error': signupForm.controls['birthDate'].touched && signupForm.controls['birthDate'].hasError('required') }" type="date">
+            <label></label>
+          </div>
+
+          <div *ngIf="signupForm.controls['birthDate'].hasError('required') && signupForm.controls['birthDate'].touched">
+            <div class="text-danger">BirthDate is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <textarea class="materialize-textarea validate" [ngClass]="{ 'input-error': signupForm.controls['bio'].touched && signupForm.controls['bio'].hasError('required') }" name="bio" type="bio" formControlName="bio" rows="7"></textarea>
+            <label for="bio">Tell us something about you</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="col s12 btn btn-large waves-effect blue">Sign Up</button>
+      </div>
+
+      <br>
+      <div class="row">
+        <a href="#" [routerLink]="['/auth/signin']" class="btn btn-link">SignIn</a>
+      </div>
+
+      <div class="row" *ngIf="error">
+        <div class="alert alert-success">{{ error }}</div>
+      </div>
+      <div class="row" *ngIf="response">
+        <div class="alert alert-success">{{ response }}</div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
