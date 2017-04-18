@@ -1,6 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-/*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-/*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
-/*@import '~@angular/material/core/theming/prebuilt/pink-bluegrey.css';*/
-/*@import '~@angular/material/core/theming/prebuilt/purple-green.css'*/
+body {
+  margin: 0;
+  padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+	vertical-align: baseline;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}

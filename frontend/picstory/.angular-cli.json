@@ -8,8 +8,7 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "favicon.ico"
+        "assets"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,6 +23,7 @@
         "../node_modules/primeng/resources/themes/omega/theme.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/materialize-css/dist/css/materialize.css",
+        "theme.scss",
         "styles.css"
       ],
       "comment": [
