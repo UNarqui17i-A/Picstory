@@ -1,0 +1,8 @@
+feed:
+ restart: always
+ build: .
+ ports:
+  - "8000:8000"
+# env_file: ~/Env/djangoenv/bin/activate
+ command: /usr/local/bin/gunicorn feed.wsgi:application -w 2 -b :8000
+

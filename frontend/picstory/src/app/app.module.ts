@@ -10,7 +10,6 @@ import 'hammerjs';
 
 import { ResponsesModule } from './responses/responses.module';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginModule } from './login/login.module';
 import { AuthModule } from './auth/auth.module';
 import { FeedModule } from './feed/feed.module';
 import { AuthGuard} from './guards/auth.guard';
@@ -32,8 +31,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule,
     MaterializeModule,
+    MaterialModule,
     ImageUploadModule.forRoot(),
 
     FeedModule,

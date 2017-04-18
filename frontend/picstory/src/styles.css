@@ -10,3 +10,11 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+a, u {
+	text-decoration: none;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}

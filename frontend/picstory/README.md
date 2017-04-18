@@ -6,6 +6,5 @@ Technologies used: </br>
 
 Angular-cli </br>
 Yarn </br>
-Materialize Css </br>
 Material </br>
 Bootstrap </br>

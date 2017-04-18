@@ -14,7 +14,7 @@ import { HomeComponent } from "./home/home.component";
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent
+    path: '', component: SigninComponent
   },
   {
     path: 'auth',
@@ -25,7 +25,7 @@ const routes: Routes = [
     ]
   },
   { path: 'posts', component: NewsfeedComponent },
-  { path: 'posts/:id', component: WallComponent },
+  { path: 'posts/:id', component: WallComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

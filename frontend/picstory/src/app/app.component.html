@@ -1,7 +1,38 @@
-<app-header></app-header>
+<div class="header">
+
+  <md-toolbar color="primary">
+    <a routerLink=''> <img style="max-width:130px; margin-top: -15px;" src='/assets/images/picstory.png'> </a>
+    <span class="spacer"> </span>
+    <a *ngIf="isLogged()" md-button routerLink="posts/{{ getCurrentUser().username }}" style="font-size: 20px; font-weight:bold;">PROFILE</a>
+    <a *ngIf="isLogged()" md-button routerLink="" style="font-size: 20px; font-weight:bold;" (click)="logOut()">LOGOUT</a>
+  </md-toolbar>
+
+</div>
 
 <div class="main-content">
   <router-outlet></router-outlet>
 </div>
 
-<app-footer></app-footer>
+<div class="footer">
+
+  <div class="quote">
+    <b>"PicStory: </b> where good <b>stories </b> meet" - Forbes
+  </div>
+
+  <div class="bottom">
+    <div class="left">
+      <a class="fa fa-facebook-official" href="https://www.facebook.com/groups/1066331173495948/" style="font-size:18px;color:#ddd;" target="_blank"></a>
+      <span style="display:inline-block; width: 2px;"></span>
+      <a class="fa fa-github-alt" href="https://github.com/UNarqui17i-A/Picstory" style="font-size:20px;color:#ddd;" target="_blank"></a>
+      <span style="display:inline-block; width: 2px;"></span>
+      Software Architecture UNAL
+    </div>
+    <div class="center">
+      <a routerLink='/home'> <img src='/assets/images/picstory_dark.png' > </a>
+    </div>
+    <div class="right">
+      <p>Picstory © 2017. All rights reserved. </p>
+    </div>
+  </div>
+
+</div>
