@@ -1,13 +1,10 @@
 <div class="header">
 
   <md-toolbar color="primary">
-
-    <button md-icon-button (click)="menu.open()">
-        <md-icon>check</md-icon>
-    </button>
+    <a routerLink='/home'> <img style="max-width:130px; margin-top: -15px;" src='/assets/images/picstory.png'> </a>
     <span class="spacer"> </span>
-    <a routerLink='/home'> <img style="max-width:120px; margin-top: -5px;" src='/assets/images/picstory.png' > </a>
-
+    <a md-button routerLink="." style="font-size: 20px; font-weight:bold;">PROFILE</a>
+    <a md-button routerLink="." style="font-size: 20px; font-weight:bold;">LOGOUT</a>
   </md-toolbar>
 
 </div>
