@@ -17,15 +17,27 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  models: {
+    connection: 'mongodb-prod',
+    migrate: 'safe'
+  },
+
+  connections: {
+    'mongodb-prod': {
+      adapter: 'sails-mongo',
+      host: '192.168.99.101',
+      port: 27017,
+      // user: 'username', //optional
+      // password: 'password', //optional
+      database: 'users' //optional
+    }
+  },
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
 
-  // port: 80,
+  port: 8005,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
@@ -34,5 +46,9 @@ module.exports = {
   // log: {
   //   level: "silent"
   // }
+
+  session: {
+    secret: 'd47097896e48a771c710757e9a8c1616'
+  }
 
 };

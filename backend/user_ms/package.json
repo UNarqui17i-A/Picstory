@@ -1,12 +1,12 @@
 {
-  "name": "User",
+  "name": "UserMS",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
-    "ejs": "^2.3.4",
-    "express": "^4.15.2",
+    "bcrypt": "^1.0.2",
+    "ejs": "2.3.4",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -20,7 +20,8 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
-    "mongoose": "^4.9.0",
+    "jsonwebtoken": "^7.3.0",
+    "node-uuid": "^1.4.8",
     "rc": "1.0.1",
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9",
@@ -33,8 +34,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/crow/User.git"
+    "url": "git://github.com//UserMS.git"
   },
-  "author": "crow",
+  "author": "eccarrilloe",
   "license": ""
 }
