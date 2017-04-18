@@ -4,7 +4,6 @@ class CreateScores < ActiveRecord::Migration[5.0]
       t.references :post, foreign_key: true
       t.string :user_id
       t.integer :scored
-
       t.timestamps
     end
   end

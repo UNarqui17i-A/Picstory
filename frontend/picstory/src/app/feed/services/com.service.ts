@@ -10,14 +10,15 @@ export class ComService {
   private urlGetPostUser: string = 'http://'+this.ipHost+':8010/posts?user_id=';
   private urlGetPostsByPage: string = 'http://' + this.ipHost + ':8010/posts?page=';
   private urlPostPublication: string = 'http://'+this.ipHost+':8010/posts';
+  private urlScorePost: string = 'http://'+ this.ipHost + ':8010/scores';
 
   constructor(private http: Http) { }
 
 
-  getPostsUser(idUser: string){
+  getPostsUserByPage(idUser: string, page: number){
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
-    return this.http.get(this.urlGetPostUser+idUser, requestOptions)
+    return this.http.get(this.urlGetPostUser+idUser+'&&page='+ page, requestOptions)
       .map( (res: Response) => res.json() )
       .catch(this.handleError)
   }
@@ -34,6 +35,20 @@ export class ComService {
     let requestOptions = new RequestOptions({headers: headers});
     return this.http.get(this.urlGetPostsByPage+numPage, requestOptions)
       .map( (res: Response) => res.json() )
+      .catch(this.handleError)
+  }
+
+  scorePost(body: string){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+    return this.http.post(this.urlScorePost, body, requestOptions)
+      .catch(this.handleError)
+  }
+
+  updateScore(idScore: string, body: string){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+    return this.http.put(this.urlScorePost+'/'+idScore, body, requestOptions)
       .catch(this.handleError)
   }
 

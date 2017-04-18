@@ -13,7 +13,6 @@ import { FeedModule } from './feed/feed.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { StaticModule } from './static/static.module';
-import { NgUploaderModule } from "ngx-uploader";
 import { ImageUploadModule } from "angular2-image-upload";
 import { AuthGuard} from './guards/auth.guard';
 import { HomeComponent } from './home/home.component'
@@ -31,7 +30,6 @@ import { HomeComponent } from './home/home.component'
     AppRoutingModule,
     MaterialModule,
     MaterializeModule,
-    NgUploaderModule,
     ImageUploadModule.forRoot(),
 
     FeedModule,

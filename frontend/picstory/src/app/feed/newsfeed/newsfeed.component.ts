@@ -1,7 +1,8 @@
-import { Component, Inject, NgZone, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
 import { FormControl, Validators } from "@angular/forms";
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-newsfeed',
@@ -19,7 +20,7 @@ export class NewsfeedComponent implements OnInit {
   location = {};
   title: FormControl;
 
-  constructor(private comService: ComService) {
+  constructor(private comService: ComService, private snackbar: MdSnackBar) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
   }
 
@@ -36,6 +37,10 @@ export class NewsfeedComponent implements OnInit {
     this.location = position.coords;
   }
 
+  checkTypeImage(){
+    return typeof this.image === 'undefined';
+  }
+
   newsFeed(){
     if (this.posts.length >= 5)
       this.page += 1;
@@ -45,6 +50,8 @@ export class NewsfeedComponent implements OnInit {
       response => {aux = response},
       error => this.error = error,
       () => {
+        if (aux == null || typeof aux === 'undefined' || aux == '')
+          this.page-=1;
         if(this.posts.length >= 5)
           this.posts =  this.desserialize(aux, this.posts)
         else
@@ -61,18 +68,27 @@ export class NewsfeedComponent implements OnInit {
   }
 
   newPost(){
-    let user_id: string = "default";
+    //let user_id: string = "user_1UXS";
+    let user_id = JSON.parse(localStorage.getItem('currentUser')).username;
     let title: string = this.title.value;
     let image_url: string = this.image ? this.image : "default";
     let latitude = this.location['latitude'];
     let longitude = this.location['longitude'];
     this.comService.publishPost(JSON.stringify({user_id, title, image_url, latitude, longitude}))
       .subscribe(
-        () => { this.newsFeed(); }
+        () => { this.openSnackBar("Your post have been saved!") }
       )
+    this.title.reset();
+    this.ngOnInit();
   }
 
   getUUID(event: any){
     this.image = 'https://s3.amazonaws.com/picstorybucket/'+event;
+  }
+
+  openSnackBar( message: string ){
+    this.snackbar.open(message, null, {
+      duration: 3000
+    });
   }
 }
