@@ -2,7 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
 import { FormControl, Validators } from "@angular/forms";
-import { MdSnackBar } from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-newsfeed',
@@ -20,7 +20,7 @@ export class NewsfeedComponent implements OnInit {
   location = {};
   title: FormControl;
 
-  constructor(private comService: ComService, private snackbar: MdSnackBar) {
+  constructor(private comService: ComService, private snackbar: MdSnackBar, public dialog: MdDialog) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
   }
 
@@ -91,4 +91,18 @@ export class NewsfeedComponent implements OnInit {
       duration: 3000
     });
   }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(DialogResultExampleDialog);
+    dialogRef.afterClosed().subscribe(result => { "hey"
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-result-example-dialog',
+  templateUrl: './dialog-post.html',
+})
+export class DialogResultExampleDialog {
+  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
 }

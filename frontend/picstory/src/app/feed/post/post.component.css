@@ -1,5 +1,17 @@
 .post{
-  margin: 30px 10px;
+  margin: 30px 20px;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.post:hover{
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 md-card {
@@ -8,7 +20,45 @@ md-card {
 }
 
 md-card-header {
-  margin: auto 20px 10px 20px;
+  position: relative;
+  height: 80px;
+  display: flex;
+}
+
+md-card-header img{
+  position:absolute;
+
+  margin: 15px;
+  height: 50px;
+  width: 50px;
+
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+md-card-header img:hover {
+  -webkit-filter: contrast(150%);
+  filter: contrast(150%);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+  cursor: pointer;
+  cursor: hand;
+}
+
+md-card-title{
+  position: absolute;
+  top: 20px;
+  left: 85px;
+  text-align: center;
+}
+
+md-card-subtitle{
+  position: absolute;
+  top: 50px;
+  left: 85px;
+  text-align: center;
 }
 
 .md-card-footer {
@@ -18,19 +68,30 @@ md-card-header {
 
 figure {
 	margin: 0;
-	padding: 0;
+  width: 100%;
+  height: 100%;
 	background: #fff;
-	overflow: hidden;
+  overflow: hidden;
 }
 
 figure img {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+  margin-top: -10px;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
 }
 
 figure:hover img {
-	-webkit-transform: scale(1.3);
-	transform: scale(1.3);
+  -webkit-filter: contrast(150%);
+  filter: contrast(150%);
+
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+
+  cursor: pointer;
+  cursor: hand;
 }

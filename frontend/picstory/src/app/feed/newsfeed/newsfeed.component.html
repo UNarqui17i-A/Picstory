@@ -30,9 +30,13 @@
 </div>
 
 <div class="row">
-  <app-post class="col-md-6 col-md-offset-0 col-sm-6" *ngFor="let post of posts" [post]="post"></app-post>
+  <app-post class="col-md-4 col-md-offset-0 col-sm-6" *ngFor="let post of posts" [post]="post"></app-post>
 </div>
 
 <div class="row">
   <button md-fab (click)="newsFeed()"><md-icon>low_priority</md-icon></button>
+</div>
+
+<div class="row">
+<button md-button (click)="openDialog()">Launch dialog</button>
 </div>

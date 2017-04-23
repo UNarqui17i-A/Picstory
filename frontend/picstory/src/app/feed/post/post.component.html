@@ -1,18 +1,18 @@
-<div class="post" layout="row">
+<div class="post">
 
     <md-card>
 
       <md-card-header>
-        <md-card-title><h3>{{post.title}}</h3></md-card-title>
-        <md-card-subtitle>
-          <h5> {{post.user_id}} </h5>
-        </md-card-subtitle>
+        <img md-card-avatar src='/assets/images/profile-pic.jpg' />
+        <md-card-title>{{post.title}}</md-card-title>
+        <md-card-subtitle>{{post.user_id}}</md-card-subtitle>
       </md-card-header>
 
       <md-card-content>
 
         <figure> <img md-card-image src="{{post.image_url}}"> </figure>
 
+<!--
         <div class="md-card-footer">
 
             <rating *ngIf="!isWall"  [(ngModel)]="rate" (ngModelChange)="reportRate($event)" [max]="max" [readonly]="isReadonly"
@@ -26,7 +26,7 @@
           <span class="rated">   {{post.total_score}}</span>
 
         </div>
-
+-->
       </md-card-content>
 
     </md-card>
