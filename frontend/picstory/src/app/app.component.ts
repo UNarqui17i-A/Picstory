@@ -21,6 +21,8 @@ export class AppComponent {
   }
 
   getCurrentUser() {
-    return localStorage.getItem('current');
+    let a = localStorage.getItem('current').split(',')[2] // username always in third position
+    a = a.split('"').join('')
+    return a.substr(9, a.length); // username always in char number 9
   }
 }
