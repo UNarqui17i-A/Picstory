@@ -1,8 +1,10 @@
 import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
+import { DialogComponent } from "../dialog/dialog.component";
+import { PostComponent } from "../post/post.component";
 import { FormControl, Validators } from "@angular/forms";
-import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdDialog} from "@angular/material"
 
 @Component({
   selector: 'app-newsfeed',
@@ -10,6 +12,7 @@ import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
   styleUrls: ['./newsfeed.component.css'],
   providers: [ ComService, AWSService ]
 })
+
 export class NewsfeedComponent implements OnInit {
 
   posts: Array<any>;
@@ -93,16 +96,6 @@ export class NewsfeedComponent implements OnInit {
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(DialogResultExampleDialog);
-    dialogRef.afterClosed().subscribe(result => { "hey"
-    });
+    this.dialog.open(DialogComponent);
   }
-}
-
-@Component({
-  selector: 'dialog-result-example-dialog',
-  templateUrl: './dialog-post.html',
-})
-export class DialogResultExampleDialog {
-  constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
 }

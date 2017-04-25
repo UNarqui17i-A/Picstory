@@ -7,6 +7,7 @@ import { MaterialModule } from "@angular/material";
 import { ImageUploadModule } from "angular2-image-upload";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RatingModule } from "ng2-bootstrap";
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { RatingModule } from "ng2-bootstrap";
     ImageUploadModule,
     RatingModule
   ],
-  declarations: [WallComponent, NewsfeedComponent, PostComponent]
+  entryComponents: [
+    DialogComponent
+  ],
+  declarations: [WallComponent, NewsfeedComponent, PostComponent, DialogComponent]
 })
 export class FeedModule { }

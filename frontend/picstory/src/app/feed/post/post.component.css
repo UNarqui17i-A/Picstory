@@ -61,11 +61,6 @@ md-card-subtitle{
   text-align: center;
 }
 
-.md-card-footer {
-  display: inline-block;
-  padding: 20px;
-}
-
 figure {
 	margin: 0;
   width: 100%;
@@ -94,4 +89,26 @@ figure:hover img {
 
   cursor: pointer;
   cursor: hand;
+}
+
+.md-card-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 15px 10px 15px;
+}
+
+.footer-item{
+  display: flex;
+  justify-content: center;
+  width: 45%;
+  color: #818181;
+  font-size: 23px;
+}
+
+md-icon{
+  margin-right: 15%;
+  margin-top: 2px;
+  color: #818181;
+  font-size: 30px;
 }
