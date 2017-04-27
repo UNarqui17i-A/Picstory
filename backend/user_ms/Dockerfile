@@ -11,7 +11,7 @@ RUN \
   apt-get install -y python python-dev python-pip python-virtualenv && \
   rm -rf /var/lib/apt/lists/*
 
-RUN npm config set proxy http://168.176.239.41:8080
+#RUN npm config set proxy http://168.176.239.41:8080
 
 RUN npm install -g sails
 
