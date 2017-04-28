@@ -25,7 +25,7 @@ module.exports = {
   connections: {
     'mongodb-dev': {
       adapter: 'sails-mongo',
-      host: 'localhost',
+      host: '192.168.99.101',
       port: 27017,
       // user: 'username', //optional
       // password: 'password', //optional
@@ -33,7 +33,7 @@ module.exports = {
     }
   },
 
-  port: 8000,
+  port: 8005,
 
   session: {
     secret: 'd47097896e48a771c710757e9a8c1616'
