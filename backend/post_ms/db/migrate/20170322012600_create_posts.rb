@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :image_url
       t.float :total_score
+      t.integer :total_comment
       t.float :latitude
       t.float :longitude
 

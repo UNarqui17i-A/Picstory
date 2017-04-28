@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
+  after_action :set_total_comment, only: [:create, :update, :destroy]
 
   # GET posts/:post_id/comments
   def index
@@ -41,6 +42,11 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_total_comment
+      @post = @comment.post
+      @post.update(total_comment: @post.comments.count)
     end
 
     # Only allow a trusted parameter "white list" through.
