@@ -64,6 +64,13 @@ module.exports = {
       required: true
     },
 
+    photo: {
+      type: 'string',
+      size: 200,
+      required: true,
+      unique: true
+    },
+
     birthDate: {
       type: 'date',
       required: true
