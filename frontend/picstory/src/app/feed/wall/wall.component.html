@@ -1,2 +1,27 @@
-<app-post [isWall]="true" *ngFor="let post of userPosts" [post]="post"></app-post>
-<button md-raised-button (click)="wallUser()" style="width: 100%">Load more post</button>
+<div class="row">
+	<div class="cover" style="background-image:url('http://www.coverbash.com/wp-content/covers/caeli_flowers_facebook_cover.jpg');"></div>
+	<div class="icons">
+		<img src='/assets/images/profile-pic.jpg'>
+		<div class="buttons">
+	    <button md-fab (click)="wallUser()" color="warn"><md-icon>mode_edit</md-icon></button>
+	    <button md-fab (click)="wallUser()" ><md-icon>person_add</md-icon></button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="details">
+		<h3>Cristina Ferrer</h3>
+		<p>Good Vibes</p>
+	</div>
+</div>
+
+<div class="wrapper">
+	<div class="row">
+	  <app-post [isWall]="true" class="col-md-4 col-md-offset-0 col-sm-6" *ngFor="let post of userPosts" [post]="post"></app-post>
+	</div>
+
+	<div class="row">
+	  <button md-fab (click)="wallUser()"><md-icon>low_priority</md-icon></button>
+	</div>
+</div>

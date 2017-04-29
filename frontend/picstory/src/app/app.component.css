@@ -15,9 +15,8 @@ md-toolbar {
 .main-content {
   position: relative;
   z-index: 2;
-  padding: 24px;
-  padding-top: 100px;
   background-color: #fff;
+  padding: 60px 0px 0px 0px;
 
   min-height: 100vh;
 
