@@ -17,7 +17,7 @@ export class WallComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((params: Params) =>{
-      this.user =  params['id'];
+      this.user =  params['username'];
     });
     this.userPosts = []
     this.page = 1;
