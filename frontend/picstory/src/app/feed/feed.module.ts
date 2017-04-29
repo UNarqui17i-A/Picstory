@@ -8,6 +8,7 @@ import { ImageUploadModule } from "angular2-image-upload";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RatingModule } from "ng2-bootstrap";
 import { DialogComponent } from './dialog/dialog.component';
+import { InfiniteScrollModule } from "angular2-infinite-scroll";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ReactiveFormsModule,
     MaterialModule,
     ImageUploadModule,
-    RatingModule
+    RatingModule,
+    InfiniteScrollModule
   ],
   entryComponents: [
     DialogComponent

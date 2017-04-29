@@ -14,7 +14,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '', component: SigninComponent
+    path: '', redirectTo: 'auth/signin', pathMatch: 'full'
   },
   {
     path: 'auth',
@@ -24,8 +24,10 @@ const routes: Routes = [
       { path: 'forgot', component: ForgotComponent }
     ]
   },
-  { path: 'posts', component: NewsfeedComponent, canActivate: [AuthGuard]},
-  { path: 'posts/:username', component: WallComponent, canActivate: [AuthGuard] },
+  { path: 'posts', component: NewsfeedComponent},
+  //{ path: 'posts', component: NewsfeedComponent, canActivate: [AuthGuard]},
+  //{ path: 'posts/:username', component: WallComponent, canActivate: [AuthGuard] },
+  { path: 'posts/:username', component: WallComponent },
   { path: '**', component: UnauthorizedComponent }
 ];
 
