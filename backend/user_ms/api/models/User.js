@@ -67,7 +67,7 @@ module.exports = {
     photo: {
       type: 'string',
       size: 200,
-      required: true,
+      required: false,
       unique: true
     },
 
