@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class ComService {
 
   private ipHost: string = 'localhost';
+  //private ipHost: string = '192.168.99.101';
   private urlGetPostUser: string = 'http://'+this.ipHost+':8010/posts?user_id=';
   private urlGetPostsByPage: string = 'http://' + this.ipHost + ':8010/posts?page=';
   private urlPostPublication: string = 'http://'+this.ipHost+':8010/posts';
