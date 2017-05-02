@@ -9,6 +9,8 @@ export class AWSService {
   private ipHostImage = 'localhost';
   private urlImageUpload = 'http://' + this.ipHostImage + ':8015/image/create';
   private urlDeleteImage = 'http://' + this.ipHostImage + ':8015/delete';
+  // private ipHostImage = '192.168.99.101';
+  private urlImageUpload = 'http://'+ this.ipHostImage + ':8015/image/create';
 
   constructor(private http: Http ) {
   }
