@@ -7,7 +7,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AWSService {
   private ipHostImage = 'localhost';
-  private urlImageUpload = 'http://'+ this.ipHostImage + ':8015/image/create';
+  private urlImageUpload = 'http://' + this.ipHostImage + ':8015/image/create';
+  private urlDeleteImage = 'http://' + this.ipHostImage + ':8015/delete';
 
   constructor(private http: Http ) {
   }
@@ -18,7 +19,14 @@ export class AWSService {
     return this.http.get(image_url, requestOptions)
       .catch(this.handleError)
   }
-
+  // Deletes Image from bucket
+  deleteImage(body: string){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+    console.log(this.http.post(this.urlDeleteImage, body, requestOptions))
+    return this.http.post(this.urlDeleteImage, body, requestOptions)
+      .catch(this.handleError);
+  }
   private handleError( error: any ) {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
