@@ -4,7 +4,7 @@
     <a routerLink=''> <img style="max-width:130px; margin-top: -15px;" src='/assets/images/picstory.png'> </a>
     <span class="spacer"> </span>
     <a *ngIf="isLogged()" md-button routerLink="posts/{{ getCurrentUser() }}" style="font-size: 20px; font-weight:bold;">PROFILE</a>
-    <a *ngIf="isLogged()" md-button routerLink="" style="font-size: 20px; font-weight:bold;" (click)="logOut()">LOGOUT</a>
+    <a *ngIf="isLogged()" md-button routerLink="auth/signin" style="font-size: 20px; font-weight:bold;" (click)="logOut()">LOGOUT</a>
   </md-toolbar>
 
 </div>
