@@ -12,6 +12,7 @@ export class WallComponent implements OnInit {
   error: string;
   page: number;
   user: string;
+  bio: string;
 
   constructor(private route: ActivatedRoute, private comService: ComService) { }
 
@@ -19,7 +20,8 @@ export class WallComponent implements OnInit {
     this.route.params.forEach((params: Params) =>{
       this.user =  params['username'];
     });
-    this.userPosts = []
+    this.bio = JSON.parse(localStorage.getItem('current')).bio;
+    this.userPosts = [];
     this.page = 1;
     this.wallUser();
   }
@@ -39,7 +41,7 @@ export class WallComponent implements OnInit {
         else
           this.userPosts = aux;
       }
-    )
+    );
   }
 
   private desserialize(aux: any, userPosts: Array<any>) {

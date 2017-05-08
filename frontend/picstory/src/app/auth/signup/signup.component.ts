@@ -57,7 +57,7 @@ export class SignupComponent implements OnInit {
         },
         error => {
           if (error.status) {
-           this.error = error.message
+           this.error = error.message;
           }
         }
       );

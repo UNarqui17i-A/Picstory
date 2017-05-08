@@ -124,12 +124,12 @@
       </div>
 
       <div class="row">
-        <button type="submit" class="col s12 btn btn-large waves-effect blue">Sign Up</button>
+        <button type="submit" class="col s12 btn btn-large waves-effect blue" routerLink="../signin">Sign Up</button>
       </div>
 
       <br>
       <div class="row">
-        <a href="#" [routerLink]="['/auth/signin']" class="btn btn-link">SignIn</a>
+        <a href="#" [routerLink]="['../signin']" class="btn btn-link">Sign In</a>
       </div>
 
       <div class="row" *ngIf="error">
