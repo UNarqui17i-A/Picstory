@@ -1,18 +1,25 @@
+
 <div class="row">
 	<div class="cover" style="background-image:url('http://www.coverbash.com/wp-content/covers/caeli_flowers_facebook_cover.jpg');"></div>
 	<div class="icons">
-		<img src='/assets/images/profile-pic.jpg'>
-		<div class="buttons">
+
+    <div class = "image-upload" >
+      <label for="UpImage">
+        <a id="home"><img class="image_on" src="{{userPhoto}}" alt="logo" /><img class="image_off" src="/assets/images/upload.png" alt="logo" /></a>
+      </label>
+      <input id="UpImage" type="file" accept="image/*" (change)="changeListener($event)">
+    </div>
+
+    <div class="buttons">
 	    <button md-fab (click)="wallUser()" color="warn"><md-icon>mode_edit</md-icon></button>
 	    <button md-fab (click)="wallUser()" ><md-icon>person_add</md-icon></button>
 		</div>
 	</div>
 </div>
-
 <div class="row">
 	<div class="details">
-		<h3>Cristina Ferrer</h3>
-		<p>Good Vibes</p>
+		<h3>{{user}}</h3>
+		<p>{{bio}}</p>
 	</div>
 </div>
 

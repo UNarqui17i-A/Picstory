@@ -4,7 +4,7 @@ import { AWSService } from "../services/aws.service";
 import { DialogComponent } from "../dialog/dialog.component";
 import { PostComponent } from "../post/post.component";
 import { FormControl, Validators } from "@angular/forms";
-import { MdSnackBar, MdDialog} from "@angular/material"
+import { MdSnackBar, MdDialog} from "@angular/material";
 
 @Component({
   selector: 'app-newsfeed',
@@ -21,9 +21,10 @@ export class NewsfeedComponent implements OnInit {
   image: string;
   response: any;
   location = {};
-  title: FormControl;
+  title: FormControl
 
-  constructor(private comService: ComService, private snackbar: MdSnackBar, public dialog: MdDialog) {
+
+  constructor(private awsService: AWSService, private comService: ComService, private snackbar: MdSnackBar, public dialog: MdDialog) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
   }
 
@@ -72,7 +73,7 @@ export class NewsfeedComponent implements OnInit {
 
   newPost(){
     //let user_id: string = "user_1UXS";
-    let user_id = JSON.parse(localStorage.getItem('currentUser')).username;
+    let user_id = JSON.parse(localStorage.getItem('current')).username;
     let title: string = this.title.value;
     let image_url: string = this.image ? this.image : "default";
     let latitude = this.location['latitude'];
@@ -93,6 +94,17 @@ export class NewsfeedComponent implements OnInit {
     this.snackbar.open(message, null, {
       duration: 3000
     });
+  }
+
+  imageRemoved(event: any){
+    var req: string;
+    req = JSON.stringify(
+      {
+        'id': this.image.substr(40, this.image.length)
+      });
+    this.awsService.deleteImage(req).subscribe(
+      response => {console.log(response._body)}
+      );
   }
 
   openDialog() {

@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export class RestService {
 
   /* Host data */
-  host: string = 'http://localhost:8000/';
+  //host: string = 'http://localhost:8005/';
+  host: string = 'http://192.168.99.101:8005/';
 
   constructor(private http: Http) { }
 
@@ -25,6 +26,15 @@ export class RestService {
     let data = JSON.stringify(body);
 
     return this.http.post(this.host + url, data, requestOptions)
+      .catch(this.handleError);
+  }
+
+  put(url: string, body: any) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let requestOptions = new RequestOptions({ headers: headers });
+    let data = JSON.stringify(body);
+    //console.log(url, data);
+    return this.http.put(this.host + url, data, requestOptions)
       .catch(this.handleError);
   }
 

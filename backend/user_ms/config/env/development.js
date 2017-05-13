@@ -25,11 +25,14 @@ module.exports = {
   connections: {
     'mongodb-dev': {
       adapter: 'sails-mongo',
-      host: '192.168.99.101',
-      port: 27017,
+      url: 'mongodb://172.17.0.1:27017/users',
+      // host: 'localhost',
+      // port: 27017,
+
       // user: 'username', //optional
       // password: 'password', //optional
-      database: 'users' //optional
+      // database: 'users', //optional
+      timezone: 'America/Bogota'
     }
   },
 

@@ -3,17 +3,17 @@ version: '2'
 services:
 
   userms:
-      build: .
-      image: userms
-      container_name: userms
-      ports:
-        - 8005:8005
-      links:
-        - userdb
+    #build: .
+    image: arqsoftpicstory/userms
+    container_name: userms
+    ports:
+      - 8005:8005
+    links:
+      - userdb
 
   userdb:
-    build: ./db
-    image: userdb
+    #build: ./db
+    image: arqsoftpicstory/userdb
     container_name: userdb
     ports:
       - 27017:27017

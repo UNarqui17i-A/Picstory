@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestService } from '../services/rest.service';
 import { EmailValidator } from '../../validators/email.validator';
 import { EqualPasswordsValidator } from '../../validators/eqPassword.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,8 @@ export class SignupComponent implements OnInit {
   response: string;
   error: string;
 
-  constructor(private fb: FormBuilder,
+  constructor(private router: Router,
+              private fb: FormBuilder,
               private restService: RestService) { }
 
   ngOnInit() {
@@ -44,7 +46,7 @@ export class SignupComponent implements OnInit {
     let confirmPassword = (<FormGroup> formValue.controls['passwords']).controls['confirmPassword'].value
     let bio = formValue.controls['bio'].value
     //let birthDate = datePipe.transform(formValue.controls['birthDate'].value, 'dd/MM/yyyy')
-    let birthDate = formValue.controls['birthDate'].value
+    let birthDate = formValue.controls['birthDate'].value;
     let request = {firstName: firstName, lastName: lastName, username: username, email: email, password: password, confirmPassword: confirmPassword, birthDate: birthDate, bio: bio}
 
     this.restService.post('user', request)
@@ -53,11 +55,12 @@ export class SignupComponent implements OnInit {
           let res = JSON.parse(response._body);
           if (res.newUser) {
             this.response = 'User created successfully';
+            this.router.navigate(['auth/signin']);
           }
         },
         error => {
           if (error.status) {
-           this.error = error.message
+           this.error = error.message;
           }
         }
       );
