@@ -1,8 +1,6 @@
 import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
-import { DialogComponent } from "../dialog/dialog.component";
-import { PostComponent } from "../post/post.component";
 import { FormControl, Validators } from "@angular/forms";
 import { MdSnackBar, MdDialog} from "@angular/material";
 
@@ -15,14 +13,27 @@ import { MdSnackBar, MdDialog} from "@angular/material";
 
 export class NewsfeedComponent implements OnInit {
 
-  posts: Array<any>;
+  posts: Array<any> = [
+    '{ \
+    id: 10, \
+    user_id: "user_1UXS", \
+    title: "testsakaslkm", \
+    image_url: "https://s3.amazonaws.com/picstorybucket/75212c00-5efe-ea74-7ea1-f909bb277cc3", \
+    total_score: null, \
+    latitude: 4.6319665, \
+    longitude: -74.0828724, \
+    created_at: "2017-04-17T11:31:42.242Z", \
+    updated_at: "2017-04-17T11:31:42.242Z", \
+    comments: [ ], \
+    scores: [ ] \
+  },'
+  ];
   page: number;
   error: string;
   image: string;
   response: any;
   location = {};
   title: FormControl
-
 
   constructor(private awsService: AWSService, private comService: ComService, private snackbar: MdSnackBar, public dialog: MdDialog) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
@@ -31,7 +42,7 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit() {
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
-    };
+    }
     this.posts = [];
     this.page = 1;
     this.newsFeed();
@@ -49,7 +60,7 @@ export class NewsfeedComponent implements OnInit {
     if (this.posts.length >= 5)
       this.page += 1;
 
-    var aux;
+    let aux;
     this.comService.getPostsByPage(this.page).subscribe(
       response => {aux = response},
       error => this.error = error,
@@ -57,7 +68,7 @@ export class NewsfeedComponent implements OnInit {
         if (aux == null || typeof aux === 'undefined' || aux == '')
           this.page-=1;
         if(this.posts.length >= 5)
-          this.posts =  this.desserialize(aux, this.posts)
+          this.posts =  this.desserialize(aux, this.posts);
         else
           this.posts = aux;
       }
@@ -81,7 +92,7 @@ export class NewsfeedComponent implements OnInit {
     this.comService.publishPost(JSON.stringify({user_id, title, image_url, latitude, longitude}))
       .subscribe(
         () => { this.openSnackBar("Your post have been saved!") }
-      )
+      );
     this.title.reset();
     this.ngOnInit();
   }

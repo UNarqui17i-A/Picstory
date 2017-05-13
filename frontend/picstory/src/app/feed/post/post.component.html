@@ -10,7 +10,7 @@
 
       <md-card-content>
 
-        <figure> <img md-card-image src="{{post.image_url}}"> </figure>
+        <figure (click)="openDetail()"> <img md-card-image src="{{post.image_url}}"> </figure>
 
         <div class="md-card-footer">
             <rating *ngIf="!isWall"  [(ngModel)]="rate" (ngModelChange)="reportRate($event)" [max]="max" [readonly]="isReadonly"

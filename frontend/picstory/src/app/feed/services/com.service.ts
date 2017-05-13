@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ComService {
+
   private ipHost: string = 'localhost';
   private urlGetPostUser: string = 'http://'+this.ipHost+':8010/posts?user_id=';
   private urlGetPostsByPage: string = 'http://' + this.ipHost + ':8010/posts?page=';

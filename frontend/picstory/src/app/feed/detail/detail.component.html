@@ -1,0 +1,27 @@
+<md-dialog-content>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-0">
+      <md-card style="margin-bottom: 10px;">
+        <md-card-header>
+          <md-card-title>
+            {{post.user_id}}
+          </md-card-title>
+        </md-card-header>
+        <md-card-content>
+          <figure> <img md-card-image  src="{{post.image_url}}"> </figure>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div class="col-md-6 col-md-offset-0">
+      <md-card *ngIf="post.comments.length > 0 " style="margin-top: 10px;" >
+        <md-card-content>
+          <md-list>
+            <md-list-item *ngFor="let comment of post.comments">
+              <b md-line>{{comment.user_id}}</b> <p md-line> {{comment.commented}}</p>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-dialog-content>

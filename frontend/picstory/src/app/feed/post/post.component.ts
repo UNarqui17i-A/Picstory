@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AWSService } from "../services/aws.service";
 import { ComService } from "../services/com.service";
+import { DetailComponent } from "../detail/detail.component";
+import { MdDialog } from "@angular/material";
 
 @Component({
   selector: 'app-post',
@@ -29,7 +31,8 @@ export class PostComponent implements OnInit {
     this.overStar = void 0;
   }
 
-  constructor(private awsService: AWSService, private comService: ComService) {
+  constructor(private awsService: AWSService, private comService: ComService,
+              public detailImage: MdDialog) {
 
   }
 
@@ -52,6 +55,11 @@ export class PostComponent implements OnInit {
         return data;
     });
     return scorer;
+  }
+
+  openDetail(){
+    let detail = this.detailImage.open(DetailComponent)
+    detail.componentInstance.post = this.post
   }
 
   reportRate(event: any){

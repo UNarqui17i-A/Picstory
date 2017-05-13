@@ -1,7 +1,7 @@
 import { ImageUploadModule } from "angular2-image-upload";
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterializeModule } from 'angular2-materialize';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdDialogModule, MdToolbarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -32,8 +33,9 @@ import { FooterComponent } from './layouts/footer/footer.component';
     HttpModule,
     AppRoutingModule,
     MaterializeModule,
-    MaterialModule,
     ImageUploadModule.forRoot(),
+    BrowserAnimationsModule,
+    MdToolbarModule,
 
     FeedModule,
     AuthModule,
