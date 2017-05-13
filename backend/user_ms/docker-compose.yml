@@ -10,17 +10,10 @@ services:
       - 8005:8005
     links:
       - userdb
-    networks:
-      - back-tier
 
   userdb:
-    build: ./db
-    image: userdb
+    #build: ./db
+    image: arqsoftpicstory/userdb
     container_name: userdb
     ports:
       - 27017:27017
-    networks:
-      - back-tier
-
-networks:
-  back-tier:

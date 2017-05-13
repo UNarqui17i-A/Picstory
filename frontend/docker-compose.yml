@@ -1,5 +1,6 @@
 front-app:
- build: .
+ #build: .
+ image: arqsoftpicstory/front
  ports:
   - "4200:4200"
 
