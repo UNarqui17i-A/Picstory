@@ -6,11 +6,10 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AWSService {
-  // private ipHostImage = '192.168.99.101';
-  private ipHostImage = 'localhost';
+  private ipHostImage = '192.168.99.101';
+  //private ipHostImage = 'localhost';
   private urlImageUpload = 'http://' + this.ipHostImage + ':8015/image/create';
   private urlDeleteImage = 'http://' + this.ipHostImage + ':8015/delete';
-
 
   constructor(private http: Http ) {
   }
@@ -26,6 +25,13 @@ export class AWSService {
     let headers = new Headers({'Content-Type': 'application/json'});
     let requestOptions = new RequestOptions({headers: headers});
     return this.http.post(this.urlDeleteImage, body, requestOptions)
+      .catch(this.handleError);
+  }
+  storeAvatar(body:any){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+    console.log(body);
+    return this.http.post(this.urlImageUpload, body, requestOptions)
       .catch(this.handleError);
   }
   private handleError( error: any ) {
