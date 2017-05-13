@@ -11,7 +11,6 @@ export class DetailComponent implements OnInit {
   post: any;
 
   constructor(public detailRef: MdDialogRef<DetailComponent>) {
-    console.log(this.post);
   }
 
   ngOnInit() {

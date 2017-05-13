@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 export class RestService {
 
   /* Host data */
-  host: string = 'http://localhost:8000/';
+  host: string = 'http://localhost:8005/';
+  //host: string = 'http://192.168.99.101:8005/';
 
   constructor(private http: Http) { }
 

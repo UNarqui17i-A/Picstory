@@ -1,0 +1,6 @@
+services:
+  post_ms:
+    scale: 2
+  post_db:
+    scale: 2
+  

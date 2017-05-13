@@ -80,12 +80,24 @@ module.exports = {
         return res.status(401).json({ err: 'Token is not valid.' });
       }
 
-      let expired = new Date();
-      expired.setHours(expired.getHours() + 1);
+      now = new Date();
+      now.setHours(now.getHours() + 2);
+      if (now > auth.expiredAt) {
+        Auth.destroy({ id: auth.id }).exec((err, deletedAuth) => {
+          if (err) {
+            return res.status(401).json({ err: err });
+          }
 
-      auth.expiredAt = expired;
+          return res.json({ err: 'Token expired.' });
+        });
+      } else {
+        let expired = new Date();
+        expired.setHours(expired.getHours() + 1);
 
-      return res.status(200).json({ message: 'Valid Token'});
+        auth.expiredAt = expired;
+
+        return res.status(200).json({ message: 'Valid Token', token: auth});
+      }
     });
 
   },

@@ -2,7 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { ComService } from "../services/com.service";
 import { AWSService } from "../services/aws.service";
 import { FormControl, Validators } from "@angular/forms";
-import { MdSnackBar } from "@angular/material"
+import { MdSnackBar, MdDialog} from "@angular/material";
 
 @Component({
   selector: 'app-newsfeed',
@@ -33,9 +33,9 @@ export class NewsfeedComponent implements OnInit {
   image: string;
   response: any;
   location = {};
-  title: FormControl;
+  title: FormControl
 
-  constructor(private comService: ComService, private snackbar: MdSnackBar) {
+  constructor(private awsService: AWSService, private comService: ComService, private snackbar: MdSnackBar, public dialog: MdDialog) {
     this.title = new FormControl('', Validators.compose([Validators.required]))
   }
 
@@ -107,5 +107,18 @@ export class NewsfeedComponent implements OnInit {
     });
   }
 
+  imageRemoved(event: any){
+    var req: string;
+    req = JSON.stringify(
+      {
+        'id': this.image.substr(40, this.image.length)
+      });
+    this.awsService.deleteImage(req).subscribe(
+      response => {console.log(response._body)}
+      );
+  }
 
+  openDialog() {
+    this.dialog.open(DialogComponent);
+  }
 }

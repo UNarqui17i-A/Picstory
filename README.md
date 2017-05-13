@@ -35,7 +35,9 @@ The application is separated in three microservices:
     *   PostgreSQL
 
 
-3.  **Images:** Manage content related to images and their storage.
+3.  **Storage:** Manage content related to images and their storage.
 
     *Technologies:*
-    *   Python (Django Framework)
+    *   Python (Evee/Flask Framework)
+    *   AWS S3 cloud storage
+    

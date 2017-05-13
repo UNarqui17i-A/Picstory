@@ -11,3 +11,5 @@ ADD Gemfile.lock /post/Gemfile.lock
 RUN bundle install
 
 ADD . /post
+
+RUN rake db:drop db:create db:migrate db:seed
