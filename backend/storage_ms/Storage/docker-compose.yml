@@ -1,4 +1,5 @@
 storage-ms:
-    build: .
+    #build: .
+    image: arqsoftpicstory/storage
     ports:
     - 8015:8015

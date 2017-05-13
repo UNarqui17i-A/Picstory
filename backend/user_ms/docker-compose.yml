@@ -3,8 +3,8 @@ version: '2'
 services:
 
   userms:
-    build: .
-    image: userms
+    #build: .
+    image: arqsoftpicstory/userms
     container_name: userms
     ports:
       - 8005:8005
