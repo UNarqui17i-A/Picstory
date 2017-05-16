@@ -7,7 +7,7 @@ export class RestService {
 
   constructor(private http: Http) { }
 
-  ipHost: string = "192.168.99.101"; //fixed ip
+  ipHost: string = "user-ms"; //fixed ip
   urlNewUser: string = 'http://'+this.ipHost+':8005/user';
 
   postSignUp(body : string){

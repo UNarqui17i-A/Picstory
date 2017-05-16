@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AWSService {
-  private ipHostImage = '192.168.99.101';
+  private ipHostImage = 'storage-ms';
   //private ipHostImage = 'localhost';
   private urlImageUpload = 'http://' + this.ipHostImage + ':8015/image/create';
   private urlDeleteImage = 'http://' + this.ipHostImage + ':8015/delete';
