@@ -26,7 +26,7 @@ module.exports = {
     'mongodb-prod': {
       adapter: 'sails-mongo',
       // url: 'mongodb://172.17.0.1:27017/users',
-      url: 'mongodb://192.168.99.101:27017/users',
+      url: 'mongodb://userdb:27017/users',
       // host: '192.168.99.101',
       // port: 27017,
       // user: 'username', //optional
