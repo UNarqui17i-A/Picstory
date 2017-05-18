@@ -4,5 +4,5 @@ WORKDIR /usr/src/app
 COPY ./picstory/package.json /usr/src/app
 RUN yarn
 COPY ./picstory/ /usr/src/app
-EXPOSE 4200
+EXPOSE 8020
 CMD ["npm", "start"]
