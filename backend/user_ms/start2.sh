@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-rancher-compose --project-name user_ms \
+../rancher-compose --project-name user_ms \
     --url http://192.169.69.2:8080/v1/projects/1a5 \
     --access-key 4E20D2C6C92278BDF77B \
     --secret-key qSBR5obJqsg4YVJfnLAhNJarzsySXuc6j1G1Ak5F \

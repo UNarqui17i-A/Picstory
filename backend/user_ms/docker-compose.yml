@@ -1,18 +1,25 @@
 version: '2'
+
 services:
 
   userms:
-    #build: .
+    # build: .
     image: arqsoftpicstory/userms
     container_name: userms
     ports:
       - 8005:8005
     links:
       - userdb
+    depends_on:
+      - userdb
+    labels:
+      io.rancher.scheduler.affinity:host_label: userms=true
 
   userdb:
-    #build: ./db
+    # build: ./db
     image: arqsoftpicstory/userdb
     container_name: userdb
     ports:
       - 27017:27017
+    labels:
+      io.rancher.scheduler.affinity:host_label: userms=true
