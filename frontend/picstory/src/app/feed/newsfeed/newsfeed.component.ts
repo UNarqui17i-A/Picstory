@@ -117,8 +117,4 @@ export class NewsfeedComponent implements OnInit {
       response => {console.log(response._body)}
       );
   }
-
-  openDialog() {
-    this.dialog.open(DialogComponent);
-  }
 }

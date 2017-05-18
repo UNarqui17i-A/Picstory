@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'forgot', component: ForgotComponent }
     ]
   },
-  {path: 'posts', component: NewsfeedComponent, canActivate: [AuthGuard]},
+  {path: 'posts', component: NewsfeedComponent},//, canActivate: [AuthGuard]},
   { path: 'posts/:username', component: WallComponent, canActivate: [AuthGuard] },
   { path: '**', component: UnauthorizedComponent }
 ];

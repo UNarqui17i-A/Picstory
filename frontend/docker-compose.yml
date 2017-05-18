@@ -2,5 +2,5 @@ front-app:
  #build: .
  image: arqsoftpicstory/front
  ports:
-  - "4200:4200"
+  - "8020:8020"
 
