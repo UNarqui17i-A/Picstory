@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  balancer:
+    image: rancher/lb-service-haproxy:v0.7.3
+    ports:
+      - 80
+      - 8005
+      - 8010
+      - 8020
+    labels:
+      io.rancher.scheduler.affinity:host_label: lb=true
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+      io.rancher.scheduler.global: 'true'
+

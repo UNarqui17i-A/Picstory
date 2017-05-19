@@ -7,41 +7,58 @@ services:
     image: arqsoftpicstory/userms
     container_name: userms1
     ports:
-      - 8005:8005
+      - 8006:8005
     links:
       - userdb1:userdb
     depends_on:
       - userdb1
     labels:
       io.rancher.scheduler.affinity:host_label: userms1=true
+    networks:
+      - backend
+      - frontend
 
   userdb1:
-    # build: ./db
-    image: arqsoftpicstory/userdb
+    image: mongo
     container_name: userdb1
     ports:
       - 27017:27017
+    command: mongod --master
     labels:
       io.rancher.scheduler.affinity:host_label: userms1=true
+    networks:
+      - backend
 
   userms2:
     # build: .
     image: arqsoftpicstory/userms
     container_name: userms2
     ports:
-      - 8005:8005
+      - 8007:8005
     links:
       - userdb2:userdb
     depends_on:
       - userdb2
     labels:
       io.rancher.scheduler.affinity:host_label: userms2=true
+    networks:
+      - backend
+      - frontend
 
   userdb2:
-    # build: ./db
-    image: arqsoftpicstory/userdb
-    container_name: userdb2
+    image: mongo
     ports:
       - 27017:27017
+    links:
+      - userdb1
+    command: mongod --slave --source userdb1
     labels:
       io.rancher.scheduler.affinity:host_label: userms2=true
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge

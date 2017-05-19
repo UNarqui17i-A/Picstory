@@ -1,6 +1,7 @@
 front-app:
- #build: .
- image: arqsoftpicstory/front
- ports:
-  - "8020:8020"
-
+  build: .
+  # image: arqsoftpicstory/front
+  ports:
+    - "8020:8020"
+  external_links:
+    - r_user-ms-userms2-1:userms

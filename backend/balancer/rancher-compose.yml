@@ -1,0 +1,19 @@
+version: '2'
+services:
+  lb1:
+    scale: 1
+    # All load balancer options are configured in this key
+    lb_config:
+      port_rules:
+      - source_port: 8005
+        target_port: 8005
+        service: user-ms/userms1
+        protocol: http
+        hostname: userms.picstory.com
+
+    health_check:
+      port: 42
+      interval: 2000
+      unhealthy_threshold: 3
+      healthy_threshold: 2
+      response_timeout: 2000
