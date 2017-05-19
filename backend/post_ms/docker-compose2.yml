@@ -1,0 +1,30 @@
+version: '2'
+services:
+
+  db-slave:
+    image: 'bitnami/postgresql:latest'
+    ports:
+      - '5432'
+    labels:
+      io.rancher.scheduler.affinity:host_label: id=6
+    environment:
+      - POSTGRESQL_REPLICATION_MODE=slave
+      - POSTGRESQL_REPLICATION_USER=repl_user
+      - POSTGRESQL_REPLICATION_PASSWORD=repl_password
+      - POSTGRESQL_MASTER_HOST=db
+      - POSTGRESQL_MASTER_PORT=5432
+
+  app-2:
+    #build: .
+    image: arqsoftpicstory/post2
+    command:
+      bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8011 -b '0.0.0.0'"
+    ports:
+      - "8011:8011"
+    labels:
+      io.rancher.scheduler.affinity:host_label: id=6
+    depends_on:
+      - db-slave
+    environment:
+      - POSTGRES_ADDR=db-slave
+      - POSTGRES_PORT=5432
