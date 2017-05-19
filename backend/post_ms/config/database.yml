@@ -22,8 +22,10 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   username: postgres
-  port: 5432
-  host: db
+  #port: 5432
+  #host: db
+  host: <%= ENV['POSTGRES_ADDR'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
 
 development:
   <<: *default

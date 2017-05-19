@@ -1,6 +1,9 @@
 services:
-  post_ms:
-    scale: 2
-  post_db:
-    scale: 2
-  
+  db:
+    scale: 1
+  app-1:
+    scale: 1
+  db-slave:
+    scale: 1
+  app-2:
+    scale: 1
