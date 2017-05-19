@@ -1,4 +1,8 @@
-userms:
-  scale: 2
-userdb:
-  scale: 2
+userms1:
+  scale: 1
+userdb1:
+  scale: 1
+userms2:
+  scale: 1
+userdb2:
+  scale: 1

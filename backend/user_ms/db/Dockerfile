@@ -1,4 +1,4 @@
-FROM mongo:3.4.2
+FROM mongo
 EXPOSE 27017
 
-CMD ["mongod", "--smallfiles"]
+CMD ["mongod", "--smallfiles", MODE]

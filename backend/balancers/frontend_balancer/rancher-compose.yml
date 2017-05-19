@@ -6,8 +6,8 @@ picstory-lb:
     - priority: 1
       protocol: http  
       service: frontend/front-app
-      source_port: 80
-      target_port: 4200
+      source_port: 85 
+      target_port: 8020
   health_check:
     response_timeout: 2000
     healthy_threshold: 2
