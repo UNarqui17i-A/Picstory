@@ -19,7 +19,7 @@
           </md-input-container>
         </md-card-content>
 
-        <image-upload  [max]="1" [buttonCaption]="'Select Images'" (uuidPhoto)="getUUID($event)" [url]="'http://storage-ms:8015/image/create'" [headers]="[{header: 'Content-Type', value: 'application/json'}]" (onRemove)="imageRemoved($event)" > </image-upload>
+        <image-upload  [max]="1" [buttonCaption]="'Select Images'" (uuidPhoto)="getUUID($event)" [url]="'http://192.168.99.102:8015/image/create'" [headers]="[{header: 'Content-Type', value: 'application/json'}]" (onRemove)="imageRemoved($event)" > </image-upload>
 
         <md-card-actions>
           <button md-raised-button (click)="newPost(titlePost)" [disabled]="!title.valid || checkTypeImage()">Send</button>

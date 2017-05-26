@@ -7,8 +7,8 @@ export class RestService {
 
   /* Host data */
   //host: string = 'http://userms1:8005/';
-  host: string = 'http://userms1:8005/';
-  // host: string = 'http://192.168.99.101:8005/';
+  // host: string = 'http://userms1:8005/';
+  host: string = 'http://192.168.99.101:8005/';
   //host: string = 'http://192.168.99.101:8005/';
 
 
