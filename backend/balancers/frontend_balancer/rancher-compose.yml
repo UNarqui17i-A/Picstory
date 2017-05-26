@@ -1,12 +1,12 @@
-picstory-lb:
-  scale: 1
+front-lb:
+  scale: 2
   lb_config:
     certs: []
     port_rules:
     - priority: 1
       protocol: http  
       service: frontend/front-app
-      source_port: 85 
+      source_port: 20000
       target_port: 8020
   health_check:
     response_timeout: 2000
