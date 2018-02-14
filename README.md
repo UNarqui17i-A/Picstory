@@ -41,3 +41,10 @@ The application is separated in three microservices:
     *   Python (Evee/Flask Framework)
     *   AWS S3 cloud storage
     
+4. **Front-end**
+
+   *Technologies:*
+   * Angular 
+   * Graphic elements from:
+   *     Angular Material
+   *     Bootstrap
